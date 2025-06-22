@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/3713f886-cd77-49c5-b223-89a4942a4068
 5. Ensure this key has access to the workspace pages & databases you'd like to reference / update
 
 ## Raw Notion OpenAPI spec
-Alternatively, you could copy this raw YAML (~500 lines)
+Alternatively, you could copy this raw YAML (~300 lines)
 ```yaml
 openapi: 3.1.0
 info:
@@ -21,295 +21,103 @@ info:
   description: API for interacting with Notion resources such as pages and databases.
   version: 1.0.0
 servers:
-  - url: https://api.notion.com/v1
-    description: Main API server
+- url: https://api.notion.com/v1
+  description: Main API server
 paths:
-  /pages/{page_id}:
+  /v1/blocks/{block_id}:
+    delete:
+      responses: {}
     get:
-      operationId: getPage
-      summary: Retrieve a page by its ID.
-      parameters:
-        - name: page_id
-          in: path
-          required: true
-          description: The ID of the page to retrieve.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      responses:
-        "200":
-          description: A JSON object representing the page.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Page"
+      responses: {}
     patch:
-      operationId: updatePage
-      summary: Update a page by its ID.
-      parameters:
-        - name: page_id
-          in: path
-          required: true
-          description: The ID of the page to update.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PageUpdate"
-      responses:
-        "200":
-          description: The updated page.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Page"
-  /pages:
-    post:
-      operationId: createPage
-      summary: Create a new page.
-      description: Creates a new page that is a child of an existing page or database.
-      parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/PageCreate"
-      responses:
-        "200":
-          description: A JSON object representing the newly created page.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Page"
-  /databases/{database_id}:
+      responses: {}
+  /v1/blocks/{block_id}/children:
     get:
-      operationId: getDatabase
-      summary: Retrieve a database by its ID.
-      parameters:
-        - name: database_id
-          in: path
-          required: true
-          description: The ID of the database to retrieve.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      responses:
-        "200":
-          description: A JSON object representing the database.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Database"
-  /databases/{database_id}/query:
-    post:
-      operationId: queryDatabase
-      summary: Query a database.
-      parameters:
-        - name: database_id
-          in: path
-          required: true
-          description: The ID of the database to query.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DatabaseQuery"
-      responses:
-        "200":
-          description: The query results.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DatabaseRecord"
-  /search:
-    post:
-      operationId: search
-      summary: Search all pages and databases.
-      parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/SearchRequest"
-      responses:
-        "200":
-          description: The search results.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/SearchResponse"
-  /users:
-    get:
-      operationId: listUsers
-      summary: List all users in the workspace.
-      parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      responses:
-        "200":
-          description: A list of users.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/User"
-  /blocks/{block_id}/children:
-    get:
-      operationId: getPageOrBlockChildrenContent
-      summary: Retrieve the children of a block. Pages are also considered blocks.
-      parameters:
-        - name: block_id
-          in: path
-          required: true
-          description: The ID of the block or page to retrieve children from.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-        - name: start_cursor
-          in: query
-          required: false
-          description: The cursor to start from for pagination.
-          schema:
-            type: string
-        - name: page_size
-          in: query
-          required: false
-          description: The number of results to return per page.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 100
-            default: 100
-      responses:
-        "200":
-          description: A paginated list of child block objects.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BlockChildren"
+      responses: {}
     patch:
-      operationId: appendBlockChildren
-      summary: Append new content to a block.
-      parameters:
-        - name: block_id
-          in: path
-          required: true
-          description: The ID of the block to append content to.
-          schema:
-            type: string
-            format: uuid
-        - name: Notion-Version
-          in: header
-          required: true
-          description: Notion API version
-          schema:
-            type: string
-            default: "2022-06-28"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                children:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/Block"
-                after:
-                  type: string
-                  description: The ID of the existing block that the new block should be appended after.
-      responses:
-        "200":
-          description: A paginated list of newly created first level children block objects.
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/BlockChildren"
+      responses: {}
+  /v1/comments:
+    get:
+      responses: {}
+    post:
+      responses: {}
+  /v1/databases:
+    post:
+      responses: {}
+  /v1/databases/{database_id}:
+    get:
+      responses: {}
+    patch:
+      responses: {}
+  /v1/databases/{database_id}/query:
+    post:
+      responses: {}
+  /v1/file_uploads:
+    get:
+      responses: {}
+    post:
+      responses: {}
+  /v1/file_uploads/{file_upload_id}:
+    get:
+      responses: {}
+  /v1/file_uploads/{file_upload_id}/complete:
+    post:
+      responses: {}
+  /v1/file_uploads/{file_upload_id}/send:
+    post:
+      responses: {}
+  /v1/oauth/introspect:
+    post:
+      responses: {}
+  /v1/oauth/revoke:
+    post:
+      responses: {}
+  /v1/oauth/token:
+    post:
+      responses: {}
+  /v1/pages:
+    post:
+      responses: {}
+  /v1/pages/{page_id}:
+    get:
+      responses: {}
+    patch:
+      responses: {}
+  /v1/pages/{page_id}/properties/{property_id}:
+    get:
+      responses: {}
+  /v1/search:
+    post:
+      responses: {}
+  /v1/users:
+    get:
+      responses: {}
+  /v1/users/me:
+    get:
+      responses: {}
+  /v1/users/{user_id}:
+    get:
+      responses: {}
 components:
   headers:
     NotionVersion:
       required: true
       schema:
         type: string
-        default: "2022-06-28"
+        default: '2022-06-28'
       description: Notion API version
   schemas:
     Page:
       type: object
       required:
-        - object
-        - id
-        - properties
+      - object
+      - id
+      - properties
       properties:
         object:
           type: string
-          enum: [page]
+          enum:
+          - page
         id:
           type: string
           format: uuid
@@ -325,13 +133,13 @@ components:
     PageCreate:
       type: object
       required:
-        - parent
-        - properties
+      - parent
+      - properties
       properties:
         parent:
           type: object
           required:
-            - database_id
+          - database_id
           properties:
             database_id:
               type: string
@@ -372,12 +180,13 @@ components:
     Database:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [database]
+          enum:
+          - database
         id:
           type: string
           format: uuid
@@ -387,12 +196,13 @@ components:
     User:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [user]
+          enum:
+          - user
         id:
           type: string
           format: uuid
@@ -404,16 +214,17 @@ components:
     BlockChildren:
       type: array
       items:
-        $ref: "#/components/schemas/Block"
+        $ref: '#/components/schemas/Block'
     Block:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [block]
+          enum:
+          - block
         id:
           type: string
           format: uuid
@@ -425,12 +236,13 @@ components:
     Comment:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [comment]
+          enum:
+          - comment
         id:
           type: string
           format: uuid
@@ -442,12 +254,13 @@ components:
     PagePropertyItem:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [property_item]
+          enum:
+          - property_item
         id:
           type: string
           format: uuid
@@ -468,12 +281,13 @@ components:
     DatabaseRecord:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [database_record]
+          enum:
+          - database_record
         id:
           type: string
           format: uuid
@@ -491,16 +305,17 @@ components:
     SearchResponse:
       type: array
       items:
-        $ref: "#/components/schemas/SearchResult"
+        $ref: '#/components/schemas/SearchResult'
     SearchResult:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
-          enum: [search_result]
+          enum:
+          - search_result
         id:
           type: string
           format: uuid
@@ -513,5 +328,5 @@ components:
       scheme: bearer
       bearerFormat: JWT
 security:
-  - BearerAuth: []
+- BearerAuth: []
 ```
