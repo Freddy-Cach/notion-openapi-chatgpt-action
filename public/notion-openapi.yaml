@@ -163,20 +163,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatabaseCreate'
-            example:
-              parent:
-                type: page_id
-                page_id: YOUR_PAGE_ID
-              title:
-                - type: text
-                  text:
-                    content: Activity Logs
-              icon:
-                type: emoji
-                emoji: "🪵"
-              properties:
-                Log:
-                  title: {}
   /v1/databases/{database_id}:
     get:
       responses:
@@ -220,16 +206,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatabaseUpdate'
-            example:
-              properties:
-                Prompt:
-                  rich_text: {}
-                Action:
-                  select: {}
-                Timestamp:
-                  date: {}
-                HTTP Status:
-                  number: {}
   /v1/databases/{database_id}/query:
     post:
       responses:
@@ -681,7 +657,8 @@ components:
             `Name` property). Only a subset of property types are allowed
             when creating a database. Unsupported types, such as `status`,
             may be added later using the update database endpoint.
-          additionalProperties: true
+          additionalProperties:
+            $ref: '#/components/schemas/DatabasePropertyCreate'
     DatabaseUpdate:
       type: object
       properties:
@@ -753,6 +730,82 @@ components:
             url:
               type: string
               format: uri
+    DatabasePropertyCreate:
+      type: object
+      description: Allowed property definition when creating a database
+      oneOf:
+        - required:
+            - title
+          properties:
+            title:
+              type: object
+              additionalProperties: true
+        - required:
+            - rich_text
+          properties:
+            rich_text:
+              type: object
+              additionalProperties: true
+        - required:
+            - number
+          properties:
+            number:
+              type: object
+              additionalProperties: true
+        - required:
+            - select
+          properties:
+            select:
+              type: object
+              additionalProperties: true
+        - required:
+            - multi_select
+          properties:
+            multi_select:
+              type: object
+              additionalProperties: true
+        - required:
+            - date
+          properties:
+            date:
+              type: object
+              additionalProperties: true
+        - required:
+            - people
+          properties:
+            people:
+              type: object
+              additionalProperties: true
+        - required:
+            - files
+          properties:
+            files:
+              type: object
+              additionalProperties: true
+        - required:
+            - checkbox
+          properties:
+            checkbox:
+              type: object
+              additionalProperties: true
+        - required:
+            - url
+          properties:
+            url:
+              type: object
+              additionalProperties: true
+        - required:
+            - email
+          properties:
+            email:
+              type: object
+              additionalProperties: true
+        - required:
+            - phone_number
+          properties:
+            phone_number:
+              type: object
+              additionalProperties: true
     Database:
       type: object
       required:

@@ -26,6 +26,11 @@ When using `POST /v1/databases` you must include a `properties` object. At least
 }
 ```
 
+Only basic property types (title, rich_text, number, select, multi_select, date,
+people, files, checkbox, url, email, and phone_number) may be included at
+creation time. More advanced types like `status`, `formula`, and `rollup` must be
+added later using the update endpoint.
+
 Add additional fields later with `PATCH /v1/databases/{database_id}`:
 
 ```json
@@ -407,3 +412,13 @@ components:
 security:
 - BearerAuth: []
 ```
+
+## Troubleshooting validation errors
+If you see a 400 `validation_error` complaining that `body.properties` should be an object or an `UnrecognizedKwargsError`, your JSON payload does not follow the creation schema. Ensure that:
+- `parent` is present and correctly specifies the parent page ID.
+- `title` is an array containing at least one `text` object.
+- `properties` is a JSON object mapping property names to valid property definitions.
+- Only creation-allowed property types are used; advanced types can be added later with `PATCH /v1/databases/{id}`.
+- The `Notion-Version` header is included.
+
+Following these rules prevents those errors and allows the database to be created successfully.
