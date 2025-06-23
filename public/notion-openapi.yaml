@@ -62,6 +62,12 @@ paths:
         schema:
           type: string
       operationId: updateBlock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlockUpdate'
   /v1/blocks/{block_id}/children:
     get:
       responses:
@@ -151,6 +157,12 @@ paths:
           type: string
           default: '2022-06-28'
         description: Notion API version
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseCreate'
   /v1/databases/{database_id}:
     get:
       responses:
@@ -390,6 +402,12 @@ paths:
         schema:
           type: string
       operationId: updatePage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageUpdate'
   /v1/pages/{page_id}/properties/{property_id}:
     get:
       responses:
@@ -522,11 +540,17 @@ components:
         properties:
           type: object
           additionalProperties: true
+        archived:
+          type: boolean
+        icon:
+          $ref: '#/components/schemas/IconObject'
+        cover:
+          $ref: '#/components/schemas/FileExternal'
     PageCreate:
       type: object
       required:
-      - parent
-      - properties
+        - parent
+        - properties
       properties:
         parent:
           oneOf:
@@ -555,6 +579,7 @@ components:
                     - workspace
                 workspace:
                   type: boolean
+                  description: Only supported for public integrations with insert_content capability
         properties:
           type: object
           properties:
@@ -575,50 +600,82 @@ components:
             type: object
             additionalProperties: true
         icon:
-          oneOf:
-            - type: object
-              required:
-                - type
-                - emoji
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - emoji
-                emoji:
-                  type: string
-            - type: object
-              required:
-                - type
-                - external
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - external
-                external:
-                  type: object
-                  properties:
-                    url:
-                      type: string
-                      format: uri
+          $ref: '#/components/schemas/IconObject'
         cover:
-          oneOf:
-            - type: object
-              required:
-                - type
+          $ref: '#/components/schemas/FileExternal'
+    DatabaseCreate:
+      type: object
+      required:
+        - parent
+        - title
+        - properties
+      properties:
+        parent:
+          type: object
+          required:
+            - type
+            - page_id
+          properties:
+            type:
+              type: string
+              enum:
+                - page_id
+            page_id:
+              type: string
+        title:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        icon:
+          $ref: '#/components/schemas/IconObject'
+        properties:
+          type: object
+          additionalProperties: true
+    IconObject:
+      oneOf:
+        - type: object
+          required:
+            - type
+            - emoji
+          properties:
+            type:
+              type: string
+              enum:
+                - emoji
+            emoji:
+              type: string
+        - type: object
+          required:
+            - type
+            - external
+          properties:
+            type:
+              type: string
+              enum:
                 - external
+            external:
+              type: object
               properties:
-                type:
+                url:
                   type: string
-                  enum:
-                    - external
-                external:
-                  type: object
-                  properties:
-                    url:
-                      type: string
-                      format: uri
+                  format: uri
+    FileExternal:
+      type: object
+      required:
+        - type
+        - external
+      properties:
+        type:
+          type: string
+          enum:
+            - external
+        external:
+          type: object
+          properties:
+            url:
+              type: string
+              format: uri
     Database:
       type: object
       required:
@@ -655,8 +712,19 @@ components:
           format: uri
     BlockChildren:
       type: array
+      description: Children cannot include a child_database block. Use the database creation endpoint instead.
       items:
         $ref: '#/components/schemas/Block'
+    BlockUpdate:
+      type: object
+      properties:
+        archived:
+          type: boolean
+        callout:
+          type: object
+          properties:
+            icon:
+              $ref: '#/components/schemas/IconObject'
     Block:
       type: object
       required:
