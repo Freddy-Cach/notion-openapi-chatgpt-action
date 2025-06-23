@@ -357,3 +357,6 @@ components:
 security:
 - BearerAuth: []
 ```
+
+## Updating the API spec
+Run `pip install -r requirements.txt` and then `python scripts/sync_spec.py` to regenerate the OpenAPI files and the README snippet.
