@@ -166,8 +166,7 @@ paths:
           description: OK
       operationId: createDatabase
       description: |
-        Create an empty child database. Define properties later using the
-        updateDatabase endpoint.
+        Defines the schema and metadata for the new Notion database
       parameters:
       - name: Notion-Version
         in: header
@@ -190,6 +189,13 @@ paths:
                 - type: text
                   text:
                     content: "Activity Logs"
+              properties:
+                Name:
+                  type: title
+                  title: {}
+                Description:
+                  type: rich_text
+                  rich_text: {}
   /v1/databases/{database_id}:
     get:
       responses:
@@ -681,9 +687,9 @@ components:
       required:
         - parent
         - title
+        - properties
       description: |
-        Payload for creating a new database. Schema properties cannot be
-        set during creation and must be added later via updateDatabase.
+        Defines the schema and metadata for the new Notion database
       properties:
         parent:
           type: object
@@ -714,6 +720,44 @@ components:
             required:
               - type
               - text
+        properties:
+          type: object
+          description: |
+            Defines the schema and metadata for the new Notion database
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - title
+                  - rich_text
+                  - number
+                  - select
+                  - multi_select
+                  - date
+              title:
+                type: object
+                additionalProperties: true
+              rich_text:
+                type: object
+                additionalProperties: true
+              number:
+                type: object
+                properties:
+                  format:
+                    type: string
+                additionalProperties: true
+              select:
+                type: object
+                additionalProperties: true
+              multi_select:
+                type: object
+                additionalProperties: true
+              date:
+                type: object
+                additionalProperties: true
+          additionalProperties: true
         icon:
           $ref: '#/components/schemas/IconObject'
         cover:
