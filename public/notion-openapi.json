@@ -21,6 +21,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -39,6 +42,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -56,6 +62,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "block_id",
             "in": "path",
@@ -77,6 +86,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -94,6 +106,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "block_id",
             "in": "path",
@@ -113,7 +128,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "listComments"
+        "operationId": "listComments",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       },
       "post": {
         "responses": {
@@ -121,7 +141,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "createComment"
+        "operationId": "createComment",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/databases": {
@@ -131,7 +156,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "createDatabase"
+        "operationId": "createDatabase",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/databases/{database_id}": {
@@ -142,6 +172,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "database_id",
             "in": "path",
@@ -160,6 +193,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "database_id",
             "in": "path",
@@ -181,6 +217,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "database_id",
             "in": "path",
             "required": true,
@@ -199,7 +238,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "listFileUploads"
+        "operationId": "listFileUploads",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       },
       "post": {
         "responses": {
@@ -207,7 +251,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "createFileUpload"
+        "operationId": "createFileUpload",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/file_uploads/{file_upload_id}": {
@@ -218,6 +267,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "file_upload_id",
             "in": "path",
@@ -239,6 +291,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "file_upload_id",
             "in": "path",
             "required": true,
@@ -259,6 +314,9 @@
         },
         "parameters": [
           {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
+          {
             "name": "file_upload_id",
             "in": "path",
             "required": true,
@@ -277,7 +335,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "oauthIntrospect"
+        "operationId": "oauthIntrospect",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/oauth/revoke": {
@@ -287,7 +350,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "oauthRevoke"
+        "operationId": "oauthRevoke",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/oauth/token": {
@@ -297,7 +365,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "oauthToken"
+        "operationId": "oauthToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/pages": {
@@ -307,7 +380,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "createPage"
+        "operationId": "createPage",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/pages/{page_id}": {
@@ -318,6 +396,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "page_id",
             "in": "path",
@@ -336,6 +417,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "page_id",
             "in": "path",
@@ -356,6 +440,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "page_id",
             "in": "path",
@@ -378,18 +465,11 @@
     },
     "/v1/search": {
       "post": {
-  "parameters": [
-    {
-      "name": "Notion-Version",
-      "in": "header",
-      "required": true,
-      "schema": {
-        "type": "string",
-        "default": "2022-06-28"
-      },
-      "description": "Notion API version"
-    }
-  ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ],
         "requestBody": {
           "required": false,
           "content": {
@@ -415,7 +495,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "listUsers"
+        "operationId": "listUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/users/me": {
@@ -425,7 +510,12 @@
             "description": "Default response"
           }
         },
-        "operationId": "getSelf"
+        "operationId": "getSelf",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          }
+        ]
       }
     },
     "/v1/users/{user_id}": {
@@ -436,6 +526,9 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/NotionVersion"
+          },
           {
             "name": "user_id",
             "in": "path",
