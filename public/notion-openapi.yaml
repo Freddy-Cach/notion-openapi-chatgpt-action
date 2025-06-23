@@ -13,7 +13,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: block_id
         in: path
         required: true
@@ -25,7 +31,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: block_id
         in: path
         required: true
@@ -37,7 +49,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: block_id
         in: path
         required: true
@@ -50,7 +68,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: block_id
         in: path
         required: true
@@ -62,7 +86,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: block_id
         in: path
         required: true
@@ -76,14 +106,26 @@ paths:
           description: Default response
       operationId: listComments
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
     post:
       responses:
         default:
           description: Default response
       operationId: createComment
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/databases:
     post:
       responses:
@@ -91,14 +133,26 @@ paths:
           description: Default response
       operationId: createDatabase
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/databases/{database_id}:
     get:
       responses:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: database_id
         in: path
         required: true
@@ -110,7 +164,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: database_id
         in: path
         required: true
@@ -123,7 +183,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: database_id
         in: path
         required: true
@@ -137,21 +203,39 @@ paths:
           description: Default response
       operationId: listFileUploads
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
     post:
       responses:
         default:
           description: Default response
       operationId: createFileUpload
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/file_uploads/{file_upload_id}:
     get:
       responses:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: file_upload_id
         in: path
         required: true
@@ -164,7 +248,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: file_upload_id
         in: path
         required: true
@@ -177,7 +267,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: file_upload_id
         in: path
         required: true
@@ -191,7 +287,13 @@ paths:
           description: Default response
       operationId: oauthIntrospect
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/oauth/revoke:
     post:
       responses:
@@ -199,7 +301,13 @@ paths:
           description: Default response
       operationId: oauthRevoke
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/oauth/token:
     post:
       responses:
@@ -207,7 +315,13 @@ paths:
           description: Default response
       operationId: oauthToken
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/pages:
     post:
       responses:
@@ -215,14 +329,26 @@ paths:
           description: Default response
       operationId: createPage
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/pages/{page_id}:
     get:
       responses:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: page_id
         in: path
         required: true
@@ -234,7 +360,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: page_id
         in: path
         required: true
@@ -247,7 +379,13 @@ paths:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: page_id
         in: path
         required: true
@@ -262,7 +400,13 @@ paths:
   /v1/search:
     post:
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       requestBody:
         required: false
         content:
@@ -280,7 +424,13 @@ paths:
           description: Default response
       operationId: listUsers
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/users/me:
     get:
       responses:
@@ -288,14 +438,26 @@ paths:
           description: Default response
       operationId: getSelf
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
   /v1/users/{user_id}:
     get:
       responses:
         default:
           description: Default response
       parameters:
-      - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        schema:
+          type: string
+          default: '2022-06-28'
+        description: Notion API version
       - name: user_id
         in: path
         required: true
