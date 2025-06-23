@@ -4,7 +4,7 @@ info:
   description: API for interacting with Notion resources such as pages and databases.
   version: 1.0.0
 servers:
-- url: https://api.notion.com/v1
+- url: https://api.notion.com
   description: Main API server
 paths:
   /v1/blocks/{block_id}:
@@ -229,6 +229,14 @@ paths:
       operationId: getPageProperty
   /v1/search:
     post:
+      parameters:
+        - $ref: '#/components/parameters/NotionVersion'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
       responses:
         default:
           description: Default response
@@ -258,6 +266,15 @@ paths:
           type: string
       operationId: getUser
 components:
+  parameters:
+    NotionVersion:
+      name: Notion-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: '2022-06-28'
+      description: Notion API version
   headers:
     NotionVersion:
       required: true
