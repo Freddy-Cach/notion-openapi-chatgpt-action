@@ -39,7 +39,12 @@ def main():
 
     new_paths = {}
     for method, path in sorted(new_endpoints, key=lambda x: (x[1], x[0])):
-        op = old_paths.get(path, {}).get(method.lower(), {"responses": {}})
+        op = old_paths.get(path, {}).get(
+            method.lower(),
+            {"responses": {"default": {"description": "Default response"}}},
+        )
+        if not op.get("responses"):
+            op["responses"] = {"default": {"description": "Default response"}}
         new_paths.setdefault(path, {})[method.lower()] = op
 
     spec['paths'] = new_paths
