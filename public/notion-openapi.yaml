@@ -4,7 +4,7 @@ info:
   description: API for interacting with Notion resources such as pages and databases.
   version: 1.0.0
 servers:
-- url: https://api.notion.com
+- url: https://api.notion.com/v1
   description: Main API server
 paths:
   /v1/blocks/{block_id}:
