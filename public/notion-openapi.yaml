@@ -15,13 +15,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: block_id
         in: path
         required: true
@@ -35,13 +29,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: block_id
         in: path
         required: true
@@ -55,13 +43,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: block_id
         in: path
         required: true
@@ -82,13 +64,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: block_id
         in: path
         required: true
@@ -102,13 +78,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: block_id
         in: path
         required: true
@@ -135,13 +105,7 @@ paths:
           description: OK
       operationId: listComments
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
     post:
       responses:
         default:
@@ -150,13 +114,7 @@ paths:
           description: OK
       operationId: createComment
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/databases:
     post:
       responses:
@@ -169,30 +127,27 @@ paths:
 
         '
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DatabaseCreate'
-            example:
-              parent:
-                type: page_id
-                page_id: <PAGE_ID>
-              title:
-              - type: text
-                text:
-                  content: Activity Logs
+              type: object
+              required: [parent, title, properties]
               properties:
-                Name:
-                  title: {}
+                parent:
+                  $ref: "#/components/schemas/ParentObject"
+                title:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/RichText"
+                icon:
+                  $ref: "#/components/schemas/IconObject"
+                properties:
+                  type: object
+                  additionalProperties:
+                    $ref: "#/components/schemas/PropertySchema"
   /v1/databases/{database_id}:
     get:
       responses:
@@ -201,13 +156,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: database_id
         in: path
         required: true
@@ -221,13 +170,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: database_id
         in: path
         required: true
@@ -248,13 +191,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: database_id
         in: path
         required: true
@@ -270,13 +207,7 @@ paths:
           description: OK
       operationId: listFileUploads
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
     post:
       responses:
         default:
@@ -285,13 +216,7 @@ paths:
           description: OK
       operationId: createFileUpload
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/file_uploads/{file_upload_id}:
     get:
       responses:
@@ -300,13 +225,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: file_upload_id
         in: path
         required: true
@@ -321,13 +240,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: file_upload_id
         in: path
         required: true
@@ -342,13 +255,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: file_upload_id
         in: path
         required: true
@@ -364,13 +271,7 @@ paths:
           description: OK
       operationId: oauthIntrospect
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/oauth/revoke:
     post:
       responses:
@@ -380,13 +281,7 @@ paths:
           description: OK
       operationId: oauthRevoke
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/oauth/token:
     post:
       responses:
@@ -396,13 +291,7 @@ paths:
           description: OK
       operationId: oauthToken
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/pages:
     post:
       responses:
@@ -412,13 +301,7 @@ paths:
           description: OK
       operationId: createPage
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       requestBody:
         required: true
         content:
@@ -433,13 +316,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: page_id
         in: path
         required: true
@@ -453,13 +330,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: page_id
         in: path
         required: true
@@ -480,13 +351,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: page_id
         in: path
         required: true
@@ -501,13 +366,7 @@ paths:
   /v1/search:
     post:
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       requestBody:
         required: false
         content:
@@ -529,13 +388,7 @@ paths:
           description: OK
       operationId: listUsers
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/users/me:
     get:
       responses:
@@ -545,13 +398,7 @@ paths:
           description: OK
       operationId: getSelf
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
   /v1/users/{user_id}:
     get:
       responses:
@@ -560,13 +407,7 @@ paths:
         '200':
           description: OK
       parameters:
-      - name: Notion-Version
-        in: header
-        required: true
-        schema:
-          type: string
-          default: '2022-06-28'
-        description: Notion API version
+      - $ref: "#/components/parameters/NotionVersionHeader"
       - name: user_id
         in: path
         required: true
@@ -579,8 +420,16 @@ components:
       required: true
       schema:
         type: string
-        default: '2022-06-28'
+        default: "2022-06-28"
       description: Notion API version
+  parameters:
+    NotionVersionHeader:
+      name: Notion-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: "2022-06-28"
   schemas:
     Page:
       type: object
@@ -793,6 +642,65 @@ components:
       type: object
       additionalProperties: true
       description: Any single property object allowed by Notion.
+    PropertySchema:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+        title:
+          type: object
+        rich_text:
+          type: object
+        number:
+          type: object
+        select:
+          type: object
+        multi_select:
+          type: object
+        date:
+          type: object
+        people:
+          type: object
+        files:
+          type: object
+        checkbox:
+          type: object
+        url:
+          type: object
+        email:
+          type: object
+        phone_number:
+          type: object
+        formula:
+          $ref: "#/components/schemas/FormulaProperty"
+        relation:
+          $ref: "#/components/schemas/RelationProperty"
+        rollup:
+          $ref: "#/components/schemas/RollupProperty"
+        created_time:
+          type: object
+        created_by:
+          type: object
+        last_edited_time:
+          type: object
+        last_edited_by:
+          type: object
+    ParentObject:
+      type: object
+      additionalProperties: true
+    RichText:
+      type: object
+      additionalProperties: true
+    FormulaProperty:
+      type: object
+      additionalProperties: true
+    RelationProperty:
+      type: object
+      additionalProperties: true
+    RollupProperty:
+      type: object
+      additionalProperties: true
     Database:
       type: object
       required:
@@ -829,8 +737,7 @@ components:
           format: uri
     BlockChildren:
       type: array
-      description: Collection of child blocks. Include a `child_database` block to
-        create a new database under a parent.
+      description: Collection of child blocks.
       items:
         $ref: '#/components/schemas/Block'
     BlockUpdate:
