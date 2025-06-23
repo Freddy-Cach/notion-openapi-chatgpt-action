@@ -1025,8 +1025,8 @@
     }
   },
   "components": {
-    "parameters": [
-      {
+    "parameters": {
+      "NotionVersion": {
         "name": "Notion-Version",
         "in": "header",
         "required": true,
@@ -1036,7 +1036,7 @@
         },
         "description": "Notion API version"
       }
-    ],
+    },
     "headers": {
       "NotionVersion": {
         "required": true,
