@@ -137,13 +137,32 @@ components:
       - properties
       properties:
         parent:
-          type: object
-          required:
-          - database_id
-          properties:
-            database_id:
-              type: string
-              format: uuid
+          oneOf:
+            - type: object
+              required:
+                - page_id
+              properties:
+                page_id:
+                  type: string
+                  format: uuid
+            - type: object
+              required:
+                - database_id
+              properties:
+                database_id:
+                  type: string
+                  format: uuid
+            - type: object
+              required:
+                - type
+                - workspace
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - workspace
+                workspace:
+                  type: boolean
         properties:
           type: object
           properties:
@@ -164,19 +183,50 @@ components:
             type: object
             additionalProperties: true
         icon:
-          type: object
-          properties:
-            emoji:
-              type: string
-        cover:
-          type: object
-          properties:
-            external:
-              type: object
+          oneOf:
+            - type: object
+              required:
+                - type
+                - emoji
               properties:
-                url:
+                type:
                   type: string
-                  format: uri
+                  enum:
+                  - emoji
+                emoji:
+                  type: string
+            - type: object
+              required:
+                - type
+                - external
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - external
+                external:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                      format: uri
+        cover:
+          oneOf:
+            - type: object
+              required:
+                - type
+                - external
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - external
+                external:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                      format: uri
     Database:
       type: object
       required:
