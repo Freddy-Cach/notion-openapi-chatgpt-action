@@ -1,0 +1,12 @@
+{
+  "parent": { "type": "page_id", "page_id": "YOUR_PAGE_ID" },
+  "title": [{ "type": "text", "text": { "content": "API Logs" } }],
+  "icon": { "type": "emoji", "emoji": "🪵" },
+  "properties": {
+    "Name": { "title": {} },
+    "Action": { "select": { "options": [] } },
+    "Endpoint": { "multi_select": { "options": [] } },
+    "Timestamp": { "date": {} },
+    "HTTP Status": { "number": {} }
+  }
+}
