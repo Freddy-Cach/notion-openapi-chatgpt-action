@@ -972,20 +972,43 @@
               }
             }
           },
-          "title": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": true
-            }
-          },
-          "icon": {
-            "$ref": "#/components/schemas/IconObject"
-          },
-          "properties": {
+        "title": {
+          "type": "array",
+          "items": {
             "type": "object",
-            "additionalProperties": true
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "text"
+                ]
+              },
+              "text": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "required": [
+              "type",
+              "text"
+            ]
           }
+        },
+        "icon": {
+          "$ref": "#/components/schemas/IconObject"
+        },
+        "cover": {
+          "$ref": "#/components/schemas/FileExternal"
+        },
+        "properties": {
+          "type": "object",
+          "description": "Map of property names to property definitions. The object must include at least one property of type `title` (for example a `Name` property). Only a subset of property types are allowed when creating a database. Unsupported types, such as `status`, may be added later using the update database endpoint.",
+          "additionalProperties": true
+        }
         }
       },
       "IconObject": {
