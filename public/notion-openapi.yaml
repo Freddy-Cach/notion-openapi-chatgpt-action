@@ -1,4 +1,4 @@
-openapi: "3.1.0"
+openapi: 3.1.0
 info:
   title: Notion API
   description: API for interacting with Notion resources such as pages and databases.
@@ -12,7 +12,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -20,7 +20,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: block_id
         in: path
@@ -32,7 +32,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -40,7 +40,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: block_id
         in: path
@@ -52,7 +52,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -60,7 +60,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: block_id
         in: path
@@ -79,7 +79,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -87,7 +87,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: block_id
         in: path
@@ -99,7 +99,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -107,7 +107,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: block_id
         in: path
@@ -121,7 +121,7 @@ paths:
             schema:
               type: object
               required:
-                - children
+              - children
               properties:
                 children:
                   $ref: '#/components/schemas/BlockChildren'
@@ -131,7 +131,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: listComments
       parameters:
@@ -140,13 +140,13 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: createComment
       parameters:
@@ -155,25 +155,26 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/databases:
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: createDatabase
-      description: |
-        Defines the schema and metadata for the new Notion database
+      description: 'Defines the schema and metadata for the new Notion database
+
+        '
       parameters:
       - name: Notion-Version
         in: header
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       requestBody:
         required: true
@@ -184,24 +185,20 @@ paths:
             example:
               parent:
                 type: page_id
-                page_id: "YOUR_PAGE_ID"
+                page_id: <PAGE_ID>
               title:
-                - type: text
-                  text:
-                    content: "Activity Logs"
+              - type: text
+                text:
+                  content: Activity Logs
               properties:
                 Name:
-                  type: title
                   title: {}
-                Description:
-                  type: rich_text
-                  rich_text: {}
   /v1/databases/{database_id}:
     get:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -209,7 +206,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: database_id
         in: path
@@ -221,7 +218,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -229,7 +226,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: database_id
         in: path
@@ -248,7 +245,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -256,7 +253,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: database_id
         in: path
@@ -269,7 +266,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: listFileUploads
       parameters:
@@ -278,13 +275,13 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: createFileUpload
       parameters:
@@ -293,14 +290,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/file_uploads/{file_upload_id}:
     get:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -308,7 +305,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -321,7 +318,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -329,7 +326,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -342,7 +339,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -350,7 +347,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -363,7 +360,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: oauthIntrospect
       parameters:
@@ -372,14 +369,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/oauth/revoke:
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: oauthRevoke
       parameters:
@@ -388,14 +385,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/oauth/token:
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: oauthToken
       parameters:
@@ -404,14 +401,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/pages:
     post:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: createPage
       parameters:
@@ -420,7 +417,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       requestBody:
         required: true
@@ -433,7 +430,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -441,7 +438,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: page_id
         in: path
@@ -453,7 +450,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -461,7 +458,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: page_id
         in: path
@@ -480,7 +477,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -488,7 +485,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: page_id
         in: path
@@ -509,7 +506,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       requestBody:
         required: false
@@ -520,7 +517,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: search
   /v1/users:
@@ -528,7 +525,7 @@ paths:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: listUsers
       parameters:
@@ -537,14 +534,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/users/me:
     get:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       operationId: getSelf
       parameters:
@@ -553,14 +550,14 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
   /v1/users/{user_id}:
     get:
       responses:
         default:
           description: Default response
-        "200":
+        '200':
           description: OK
       parameters:
       - name: Notion-Version
@@ -568,7 +565,7 @@ paths:
         required: true
         schema:
           type: string
-          default: "2022-06-28"
+          default: '2022-06-28'
         description: Notion API version
       - name: user_id
         in: path
@@ -577,21 +574,12 @@ paths:
           type: string
       operationId: getUser
 components:
-  parameters:
-    NotionVersion:
-      name: Notion-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: "2022-06-28"
-      description: Notion API version
   headers:
     NotionVersion:
       required: true
       schema:
         type: string
-        default: "2022-06-28"
+        default: '2022-06-28'
       description: Notion API version
   schemas:
     Page:
@@ -628,37 +616,38 @@ components:
     PageCreate:
       type: object
       required:
-        - parent
-        - properties
+      - parent
+      - properties
       properties:
         parent:
           oneOf:
-            - type: object
-              required:
-                - page_id
-              properties:
-                page_id:
-                  type: string
-                  format: uuid
-            - type: object
-              required:
-                - database_id
-              properties:
-                database_id:
-                  type: string
-                  format: uuid
-            - type: object
-              required:
-                - type
+          - type: object
+            required:
+            - page_id
+            properties:
+              page_id:
+                type: string
+                format: uuid
+          - type: object
+            required:
+            - database_id
+            properties:
+              database_id:
+                type: string
+                format: uuid
+          - type: object
+            required:
+            - type
+            - workspace
+            properties:
+              type:
+                type: string
+                enum:
                 - workspace
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - workspace
-                workspace:
-                  type: boolean
-                  description: Only supported for public integrations with insert_content capability
+              workspace:
+                type: boolean
+                description: Only supported for public integrations with insert_content
+                  capability
         properties:
           type: object
           properties:
@@ -685,22 +674,23 @@ components:
     DatabaseCreate:
       type: object
       required:
-        - parent
-        - title
-        - properties
-      description: |
-        Defines the schema and metadata for the new Notion database
+      - parent
+      - title
+      - properties
+      description: 'Defines the schema and metadata for the new Notion database
+
+        '
       properties:
         parent:
           type: object
           required:
-            - type
-            - page_id
+          - type
+          - page_id
           properties:
             type:
               type: string
               enum:
-                - page_id
+              - page_id
             page_id:
               type: string
         title:
@@ -711,52 +701,17 @@ components:
               type:
                 type: string
                 enum:
-                  - text
+                - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-              - type
-              - text
+            - type
+            - text
         properties:
           type: object
-          description: |
-            Defines the schema and metadata for the new Notion database
-          additionalProperties:
-            type: object
-            properties:
-              type:
-                type: string
-                enum:
-                  - title
-                  - rich_text
-                  - number
-                  - select
-                  - multi_select
-                  - date
-              title:
-                type: object
-                additionalProperties: true
-              rich_text:
-                type: object
-                additionalProperties: true
-              number:
-                type: object
-                properties:
-                  format:
-                    type: string
-                additionalProperties: true
-              select:
-                type: object
-                additionalProperties: true
-              multi_select:
-                type: object
-                additionalProperties: true
-              date:
-                type: object
-                additionalProperties: true
           additionalProperties: true
         icon:
           $ref: '#/components/schemas/IconObject'
@@ -773,15 +728,15 @@ components:
               type:
                 type: string
                 enum:
-                  - text
+                - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-              - type
-              - text
+            - type
+            - text
         properties:
           type: object
           additionalProperties:
@@ -792,42 +747,42 @@ components:
           $ref: '#/components/schemas/FileExternal'
     IconObject:
       oneOf:
-        - type: object
-          required:
-            - type
+      - type: object
+        required:
+        - type
+        - emoji
+        properties:
+          type:
+            type: string
+            enum:
             - emoji
-          properties:
-            type:
-              type: string
-              enum:
-                - emoji
-            emoji:
-              type: string
-        - type: object
-          required:
-            - type
+          emoji:
+            type: string
+      - type: object
+        required:
+        - type
+        - external
+        properties:
+          type:
+            type: string
+            enum:
             - external
-          properties:
-            type:
-              type: string
-              enum:
-                - external
-            external:
-              type: object
-              properties:
-                url:
-                  type: string
-                  format: uri
+          external:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
     FileExternal:
       type: object
       required:
-        - type
-        - external
+      - type
+      - external
       properties:
         type:
           type: string
           enum:
-            - external
+          - external
         external:
           type: object
           properties:
@@ -835,95 +790,9 @@ components:
               type: string
               format: uri
     DatabasePropertyCreate:
-      description: |
-        Allowed property definition when creating or updating a database. Avoid
-        special characters in property names and use simple identifiers like
-        `Run_ID` instead of `Run ID (optional)`.
-      oneOf:
-        - required:
-            - title
-          properties:
-            title:
-              type: object
-              additionalProperties: true
-        - required:
-            - rich_text
-          properties:
-            rich_text:
-              type: object
-              additionalProperties: true
-        - required:
-            - number
-          properties:
-            number:
-              type: object
-              additionalProperties: true
-        - required:
-            - select
-          properties:
-            select:
-              type: object
-              properties:
-                options:
-                  type: array
-                  items:
-                    type: object
-                    additionalProperties: true
-              additionalProperties: true
-        - required:
-            - multi_select
-          properties:
-            multi_select:
-              type: object
-              properties:
-                options:
-                  type: array
-                  items:
-                    type: object
-                    additionalProperties: true
-              additionalProperties: true
-        - required:
-            - date
-          properties:
-            date:
-              type: object
-              additionalProperties: true
-        - required:
-            - people
-          properties:
-            people:
-              type: object
-              additionalProperties: true
-        - required:
-            - files
-          properties:
-            files:
-              type: object
-              additionalProperties: true
-        - required:
-            - checkbox
-          properties:
-            checkbox:
-              type: object
-              additionalProperties: true
-        - required:
-            - url
-          properties:
-            url:
-              type: object
-              additionalProperties: true
-        - required:
-            - email
-          properties:
-            email:
-              type: object
-              additionalProperties: true
-        - required:
-            - phone_number
-          properties:
-            phone_number:
-              type: object
-              additionalProperties: true
+      type: object
+      additionalProperties: true
+      description: Any single property object allowed by Notion.
     Database:
       type: object
       required:
@@ -960,7 +829,8 @@ components:
           format: uri
     BlockChildren:
       type: array
-      description: Collection of child blocks. Include a `child_database` block to create a new database under a parent.
+      description: Collection of child blocks. Include a `child_database` block to
+        create a new database under a parent.
       items:
         $ref: '#/components/schemas/Block'
     BlockUpdate:

@@ -316,7 +316,8 @@
                 "basic": {
                   "value": {
                     "parent": {
-                      "page_id": "PAGE-ID"
+                      "type": "page_id",
+                      "page_id": "<PAGE_ID>"
                     },
                     "title": [
                       {
@@ -329,16 +330,6 @@
                     "properties": {
                       "Name": {
                         "title": {}
-                      },
-                      "Action": {
-                        "select": {
-                          "options": []
-                        }
-                      },
-                      "Endpoint": {
-                        "multi_select": {
-                          "options": []
-                        }
                       }
                     }
                   }
@@ -1025,18 +1016,6 @@
     }
   },
   "components": {
-    "parameters": {
-      "NotionVersion": {
-        "name": "Notion-Version",
-        "in": "header",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "default": "2022-06-28"
-        },
-        "description": "Notion API version"
-      }
-    },
     "headers": {
       "NotionVersion": {
         "required": true,
@@ -1234,20 +1213,7 @@
           },
           "properties": {
             "type": "object",
-            "description": "Map of database fields",
-            "example": {
-              "Name": {
-                "title": {}
-              },
-              "Action": {
-                "select": {
-                  "options": []
-                }
-              }
-            },
-            "additionalProperties": {
-              "$ref": "#/components/schemas/DatabasePropertyCreate"
-            }
+            "additionalProperties": true
           }
         }
       },
@@ -1363,169 +1329,9 @@
         }
       },
       "DatabasePropertyCreate": {
-        "description": "Allowed property definition when creating a database",
-        "oneOf": [
-          {
-            "required": [
-              "title"
-            ],
-            "properties": {
-              "title": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "rich_text"
-            ],
-            "properties": {
-              "rich_text": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "number"
-            ],
-            "properties": {
-              "number": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "select"
-            ],
-            "properties": {
-              "select": {
-                "properties": {
-                  "options": {
-                    "type": "array",
-                    "items": {
-                      "additionalProperties": true
-                    }
-                  }
-                },
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "multi_select"
-            ],
-            "properties": {
-              "multi_select": {
-                "properties": {
-                  "options": {
-                    "type": "array",
-                    "items": {
-                      "additionalProperties": true
-                    }
-                  }
-                },
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "date"
-            ],
-            "properties": {
-              "date": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "people"
-            ],
-            "properties": {
-              "people": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "files"
-            ],
-            "properties": {
-              "files": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "checkbox"
-            ],
-            "properties": {
-              "checkbox": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "url"
-            ],
-            "properties": {
-              "url": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "email"
-            ],
-            "properties": {
-              "email": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          },
-          {
-            "required": [
-              "phone_number"
-            ],
-            "properties": {
-              "phone_number": {
-                "additionalProperties": true
-              }
-            },
-            "type": "object",
-            "additionalProperties": true
-          }
-        ]
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Any single property object allowed by Notion."
       },
       "Database": {
         "type": "object",
