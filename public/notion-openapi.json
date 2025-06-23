@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.notion.com",
+      "url": "https://api.notion.com/v1",
       "description": "Main API server"
     }
   ],
