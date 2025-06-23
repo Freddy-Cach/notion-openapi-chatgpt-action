@@ -14,123 +14,389 @@
   "paths": {
     "/v1/blocks/{block_id}": {
       "delete": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "patch": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/blocks/{block_id}/children": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "patch": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/comments": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       },
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/databases": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/databases/{database_id}": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "patch": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/databases/{database_id}/query": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/file_uploads": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       },
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/file_uploads/{file_upload_id}": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "file_upload_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/file_uploads/{file_upload_id}/complete": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "file_upload_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/file_uploads/{file_upload_id}/send": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "file_upload_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/oauth/introspect": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/oauth/revoke": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/oauth/token": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/pages": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/pages/{page_id}": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "patch": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/pages/{page_id}/properties/{property_id}": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v1/search": {
       "post": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/users": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/users/me": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        }
       }
     },
     "/v1/users/{user_id}": {
       "get": {
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   },
