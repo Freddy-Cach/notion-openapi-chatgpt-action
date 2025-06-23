@@ -123,9 +123,7 @@ paths:
         '200':
           description: OK
       operationId: createDatabase
-      description: 'Defines the schema and metadata for the new Notion database
-
-        '
+      description: "Defines the schema and metadata for the new Notion database"
       parameters:
       - $ref: "#/components/parameters/NotionVersionHeader"
       requestBody:
@@ -526,9 +524,7 @@ components:
       - parent
       - title
       - properties
-      description: 'Defines the schema and metadata for the new Notion database
-
-        '
+      description: "Defines the schema and metadata for the new Notion database"
       properties:
         parent:
           type: object
