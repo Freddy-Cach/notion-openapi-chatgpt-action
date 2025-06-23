@@ -165,6 +165,9 @@ paths:
         "200":
           description: OK
       operationId: createDatabase
+      description: |
+        Create an empty child database. Define properties later using the
+        updateDatabase endpoint.
       parameters:
       - name: Notion-Version
         in: header
@@ -187,9 +190,6 @@ paths:
                 - type: text
                   text:
                     content: "Activity Logs"
-              properties:
-                Log:
-                  title: {}
   /v1/databases/{database_id}:
     get:
       responses:
@@ -604,13 +604,15 @@ components:
           format: uuid
         properties:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            $ref: '#/components/schemas/DatabasePropertyCreate'
     PageUpdate:
       type: object
       properties:
         properties:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            $ref: '#/components/schemas/DatabasePropertyCreate'
         archived:
           type: boolean
         icon:
@@ -679,7 +681,9 @@ components:
       required:
         - parent
         - title
-        - properties
+      description: |
+        Payload for creating a new database. Schema properties cannot be
+        set during creation and must be added later via updateDatabase.
       properties:
         parent:
           type: object
@@ -714,16 +718,6 @@ components:
           $ref: '#/components/schemas/IconObject'
         cover:
           $ref: '#/components/schemas/FileExternal'
-        properties:
-          type: object
-          description: |
-            Map of property names to property definitions. The object must
-            include at least one property of type `title` (for example a
-            `Name` property). Only a subset of property types are allowed
-            when creating a database. Unsupported types, such as `status`,
-            may be added later using the update database endpoint.
-          additionalProperties:
-            $ref: '#/components/schemas/DatabasePropertyCreate'
     DatabaseUpdate:
       type: object
       properties:
@@ -746,7 +740,8 @@ components:
               - text
         properties:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            $ref: '#/components/schemas/DatabasePropertyCreate'
         icon:
           $ref: '#/components/schemas/IconObject'
         cover:
@@ -796,7 +791,10 @@ components:
               type: string
               format: uri
     DatabasePropertyCreate:
-      description: Allowed property definition when creating a database
+      description: |
+        Allowed property definition when creating or updating a database. Avoid
+        special characters in property names and use simple identifiers like
+        `Run_ID` instead of `Run ID (optional)`.
       oneOf:
         - required:
             - title
@@ -918,7 +916,7 @@ components:
           format: uri
     BlockChildren:
       type: array
-      description: Children cannot include a child_database block. Use the database creation endpoint instead.
+      description: Collection of child blocks. Include a `child_database` block to create a new database under a parent.
       items:
         $ref: '#/components/schemas/Block'
     BlockUpdate:
