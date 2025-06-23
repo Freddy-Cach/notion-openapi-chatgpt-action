@@ -28,7 +28,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "deleteBlock"
       },
       "get": {
         "responses": {
@@ -45,7 +46,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "retrieveBlock"
       },
       "patch": {
         "responses": {
@@ -62,7 +64,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "updateBlock"
       }
     },
     "/v1/blocks/{block_id}/children": {
@@ -81,7 +84,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "listBlockChildren"
       },
       "patch": {
         "responses": {
@@ -98,7 +102,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "appendBlockChildren"
       }
     },
     "/v1/comments": {
@@ -107,14 +112,15 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "listComments"
       },
       "post": {
         "responses": {
           "default": {
             "description": "Default response"
           }
-        }
+        },
       }
     },
     "/v1/databases": {
@@ -123,7 +129,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "createDatabase"
       }
     },
     "/v1/databases/{database_id}": {
@@ -142,7 +149,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "retrieveDatabase"
       },
       "patch": {
         "responses": {
@@ -159,7 +167,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "updateDatabase"
       }
     },
     "/v1/databases/{database_id}/query": {
@@ -178,7 +187,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "queryDatabase"
       }
     },
     "/v1/file_uploads": {
@@ -187,14 +197,16 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "listFileUploads"
       },
       "post": {
         "responses": {
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "createFileUpload"
       }
     },
     "/v1/file_uploads/{file_upload_id}": {
@@ -213,7 +225,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "getFileUpload"
       }
     },
     "/v1/file_uploads/{file_upload_id}/complete": {
@@ -232,7 +245,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "completeFileUpload"
       }
     },
     "/v1/file_uploads/{file_upload_id}/send": {
@@ -251,7 +265,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "sendFileUpload"
       }
     },
     "/v1/oauth/introspect": {
@@ -260,7 +275,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "oauthIntrospect"
       }
     },
     "/v1/oauth/revoke": {
@@ -269,7 +285,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "oauthRevoke"
       }
     },
     "/v1/oauth/token": {
@@ -278,7 +295,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "oauthToken"
       }
     },
     "/v1/pages": {
@@ -287,7 +305,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "createPage"
       }
     },
     "/v1/pages/{page_id}": {
@@ -306,7 +325,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "retrievePage"
       },
       "patch": {
         "responses": {
@@ -323,7 +343,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "updatePage"
       }
     },
     "/v1/pages/{page_id}/properties/{property_id}": {
@@ -350,7 +371,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "getPageProperty"
       }
     },
     "/v1/search": {
@@ -359,7 +381,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "search"
       }
     },
     "/v1/users": {
@@ -368,7 +391,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "listUsers"
       }
     },
     "/v1/users/me": {
@@ -377,7 +401,8 @@
           "default": {
             "description": "Default response"
           }
-        }
+        },
+        "operationId": "getSelf"
       }
     },
     "/v1/users/{user_id}": {
@@ -396,7 +421,8 @@
               "type": "string"
             }
           }
-        ]
+        ],
+        "operationId": "getUser"
       }
     }
   },

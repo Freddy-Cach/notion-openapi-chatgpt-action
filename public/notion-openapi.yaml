@@ -18,6 +18,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: deleteBlock
     get:
       responses:
         default:
@@ -28,6 +29,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: retrieveBlock
     patch:
       responses:
         default:
@@ -38,6 +40,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: updateBlock
   /v1/blocks/{block_id}/children:
     get:
       responses:
@@ -49,6 +52,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: listBlockChildren
     patch:
       responses:
         default:
@@ -59,20 +63,24 @@ paths:
         required: true
         schema:
           type: string
+      operationId: appendBlockChildren
   /v1/comments:
     get:
       responses:
         default:
           description: Default response
+      operationId: listComments
     post:
       responses:
         default:
           description: Default response
+      operationId: createComment
   /v1/databases:
     post:
       responses:
         default:
           description: Default response
+      operationId: createDatabase
   /v1/databases/{database_id}:
     get:
       responses:
@@ -84,6 +92,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: retrieveDatabase
     patch:
       responses:
         default:
@@ -94,6 +103,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: updateDatabase
   /v1/databases/{database_id}/query:
     post:
       responses:
@@ -105,15 +115,18 @@ paths:
         required: true
         schema:
           type: string
+      operationId: queryDatabase
   /v1/file_uploads:
     get:
       responses:
         default:
           description: Default response
+      operationId: listFileUploads
     post:
       responses:
         default:
           description: Default response
+      operationId: createFileUpload
   /v1/file_uploads/{file_upload_id}:
     get:
       responses:
@@ -125,6 +138,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: getFileUpload
   /v1/file_uploads/{file_upload_id}/complete:
     post:
       responses:
@@ -136,6 +150,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: completeFileUpload
   /v1/file_uploads/{file_upload_id}/send:
     post:
       responses:
@@ -147,26 +162,31 @@ paths:
         required: true
         schema:
           type: string
+      operationId: sendFileUpload
   /v1/oauth/introspect:
     post:
       responses:
         default:
           description: Default response
+      operationId: oauthIntrospect
   /v1/oauth/revoke:
     post:
       responses:
         default:
           description: Default response
+      operationId: oauthRevoke
   /v1/oauth/token:
     post:
       responses:
         default:
           description: Default response
+      operationId: oauthToken
   /v1/pages:
     post:
       responses:
         default:
           description: Default response
+      operationId: createPage
   /v1/pages/{page_id}:
     get:
       responses:
@@ -178,6 +198,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: retrievePage
     patch:
       responses:
         default:
@@ -188,6 +209,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: updatePage
   /v1/pages/{page_id}/properties/{property_id}:
     get:
       responses:
@@ -204,21 +226,25 @@ paths:
         required: true
         schema:
           type: string
+      operationId: getPageProperty
   /v1/search:
     post:
       responses:
         default:
           description: Default response
+      operationId: search
   /v1/users:
     get:
       responses:
         default:
           description: Default response
+      operationId: listUsers
   /v1/users/me:
     get:
       responses:
         default:
           description: Default response
+      operationId: getSelf
   /v1/users/{user_id}:
     get:
       responses:
@@ -230,6 +256,7 @@ paths:
         required: true
         schema:
           type: string
+      operationId: getUser
 components:
   headers:
     NotionVersion:
