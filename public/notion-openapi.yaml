@@ -230,7 +230,13 @@ paths:
   /v1/search:
     post:
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
       requestBody:
         required: false
         content:
