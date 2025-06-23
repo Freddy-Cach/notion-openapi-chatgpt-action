@@ -22,39 +22,42 @@ def gather_endpoints():
         data = json.loads(script['data-initial-props'])
         api = data.get('doc', {}).get('api')
         if api and api.get('url') and api.get('method'):
-            endpoints.add((api['method'].upper(), api['url']))
+            path = api['url']
+            if path.startswith('/v1'):
+                path = path[len('/v1'):] or '/'  # strip version prefix
+            endpoints.add((api['method'].upper(), path))
     return endpoints
 
 
 # explicit operationIds used by the Notion docs
 OPERATION_IDS = {
-    ("DELETE", "/v1/blocks/{block_id}"): "deleteBlock",
-    ("GET", "/v1/blocks/{block_id}"): "retrieveBlock",
-    ("PATCH", "/v1/blocks/{block_id}"): "updateBlock",
-    ("GET", "/v1/blocks/{block_id}/children"): "retrieveBlockChildren",
-    ("PATCH", "/v1/blocks/{block_id}/children"): "appendBlockChildren",
-    ("POST", "/v1/comments"): "createComment",
-    ("GET", "/v1/comments"): "listComments",
-    ("POST", "/v1/databases"): "createDatabase",
-    ("GET", "/v1/databases/{database_id}"): "retrieveDatabase",
-    ("PATCH", "/v1/databases/{database_id}"): "updateDatabase",
-    ("POST", "/v1/databases/{database_id}/query"): "queryDatabase",
-    ("POST", "/v1/file_uploads"): "createFileUpload",
-    ("GET", "/v1/file_uploads"): "listFileUploads",
-    ("GET", "/v1/file_uploads/{file_upload_id}"): "retrieveFileUpload",
-    ("POST", "/v1/file_uploads/{file_upload_id}/send"): "sendFileUpload",
-    ("POST", "/v1/file_uploads/{file_upload_id}/complete"): "completeFileUpload",
-    ("POST", "/v1/oauth/token"): "createAccessToken",
-    ("POST", "/v1/oauth/introspect"): "introspectToken",
-    ("POST", "/v1/oauth/revoke"): "revokeToken",
-    ("POST", "/v1/pages"): "createPage",
-    ("GET", "/v1/pages/{page_id}"): "retrievePage",
-    ("PATCH", "/v1/pages/{page_id}"): "updatePage",
-    ("GET", "/v1/pages/{page_id}/properties/{property_id}"): "retrievePagePropertyItem",
-    ("POST", "/v1/search"): "search",
-    ("GET", "/v1/users"): "listUsers",
-    ("GET", "/v1/users/{user_id}"): "retrieveUser",
-    ("GET", "/v1/users/me"): "retrieveBotUser",
+    ("DELETE", "/blocks/{block_id}"): "deleteBlock",
+    ("GET", "/blocks/{block_id}"): "retrieveBlock",
+    ("PATCH", "/blocks/{block_id}"): "updateBlock",
+    ("GET", "/blocks/{block_id}/children"): "retrieveBlockChildren",
+    ("PATCH", "/blocks/{block_id}/children"): "appendBlockChildren",
+    ("POST", "/comments"): "createComment",
+    ("GET", "/comments"): "listComments",
+    ("POST", "/databases"): "createDatabase",
+    ("GET", "/databases/{database_id}"): "retrieveDatabase",
+    ("PATCH", "/databases/{database_id}"): "updateDatabase",
+    ("POST", "/databases/{database_id}/query"): "queryDatabase",
+    ("POST", "/file_uploads"): "createFileUpload",
+    ("GET", "/file_uploads"): "listFileUploads",
+    ("GET", "/file_uploads/{file_upload_id}"): "retrieveFileUpload",
+    ("POST", "/file_uploads/{file_upload_id}/send"): "sendFileUpload",
+    ("POST", "/file_uploads/{file_upload_id}/complete"): "completeFileUpload",
+    ("POST", "/oauth/token"): "createAccessToken",
+    ("POST", "/oauth/introspect"): "introspectToken",
+    ("POST", "/oauth/revoke"): "revokeToken",
+    ("POST", "/pages"): "createPage",
+    ("GET", "/pages/{page_id}"): "retrievePage",
+    ("PATCH", "/pages/{page_id}"): "updatePage",
+    ("GET", "/pages/{page_id}/properties/{property_id}"): "retrievePagePropertyItem",
+    ("POST", "/search"): "search",
+    ("GET", "/users"): "listUsers",
+    ("GET", "/users/{user_id}"): "retrieveUser",
+    ("GET", "/users/me"): "retrieveBotUser",
 }
 
 def main():
@@ -72,10 +75,8 @@ def main():
     new_paths = {}
     for method, path in sorted(new_endpoints, key=lambda x: (x[1], x[0])):
         op = old_paths.get(path, {}).get(method.lower(), {"responses": {}})
-        if "operationId" not in op:
-            op["operationId"] = OPERATION_IDS.get((method, path)) or (
-                f"{method.lower()}_{path.strip('/').replace('/', '_').replace('{', '').replace('}', '')}"
-            )
+        default_id = f"{method.lower()}_{path.strip('/').replace('/', '_').replace('{', '').replace('}', '')}"
+        op["operationId"] = OPERATION_IDS.get((method, path), op.get("operationId", default_id))
         new_paths.setdefault(path, {})[method.lower()] = op
 
     spec['paths'] = new_paths

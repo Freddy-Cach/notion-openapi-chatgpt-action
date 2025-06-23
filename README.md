@@ -24,7 +24,7 @@ servers:
 - url: https://api.notion.com/v1
   description: Main API server
 paths:
-  /v1/blocks/{block_id}:
+  /blocks/{block_id}:
     delete:
       responses: {}
       operationId: deleteBlock
@@ -34,94 +34,94 @@ paths:
     patch:
       responses: {}
       operationId: updateBlock
-  /v1/blocks/{block_id}/children:
+  /blocks/{block_id}/children:
     get:
       responses: {}
       operationId: retrieveBlockChildren
     patch:
       responses: {}
       operationId: appendBlockChildren
-  /v1/comments:
+  /comments:
     get:
       responses: {}
       operationId: listComments
     post:
       responses: {}
       operationId: createComment
-  /v1/databases:
+  /databases:
     post:
       responses: {}
       operationId: createDatabase
-  /v1/databases/{database_id}:
+  /databases/{database_id}:
     get:
       responses: {}
       operationId: retrieveDatabase
     patch:
       responses: {}
       operationId: updateDatabase
-  /v1/databases/{database_id}/query:
+  /databases/{database_id}/query:
     post:
       responses: {}
       operationId: queryDatabase
-  /v1/file_uploads:
+  /file_uploads:
     get:
       responses: {}
       operationId: listFileUploads
     post:
       responses: {}
       operationId: createFileUpload
-  /v1/file_uploads/{file_upload_id}:
+  /file_uploads/{file_upload_id}:
     get:
       responses: {}
       operationId: retrieveFileUpload
-  /v1/file_uploads/{file_upload_id}/complete:
+  /file_uploads/{file_upload_id}/complete:
     post:
       responses: {}
       operationId: completeFileUpload
-  /v1/file_uploads/{file_upload_id}/send:
+  /file_uploads/{file_upload_id}/send:
     post:
       responses: {}
       operationId: sendFileUpload
-  /v1/oauth/introspect:
+  /oauth/introspect:
     post:
       responses: {}
       operationId: introspectToken
-  /v1/oauth/revoke:
+  /oauth/revoke:
     post:
       responses: {}
       operationId: revokeToken
-  /v1/oauth/token:
+  /oauth/token:
     post:
       responses: {}
       operationId: createAccessToken
-  /v1/pages:
+  /pages:
     post:
       responses: {}
       operationId: createPage
-  /v1/pages/{page_id}:
+  /pages/{page_id}:
     get:
       responses: {}
       operationId: retrievePage
     patch:
       responses: {}
       operationId: updatePage
-  /v1/pages/{page_id}/properties/{property_id}:
+  /pages/{page_id}/properties/{property_id}:
     get:
       responses: {}
       operationId: retrievePagePropertyItem
-  /v1/search:
+  /search:
     post:
       responses: {}
       operationId: search
-  /v1/users:
+  /users:
     get:
       responses: {}
       operationId: listUsers
-  /v1/users/me:
+  /users/me:
     get:
       responses: {}
       operationId: retrieveBotUser
-  /v1/users/{user_id}:
+  /users/{user_id}:
     get:
       responses: {}
       operationId: retrieveUser
