@@ -1098,9 +1098,6 @@
           "properties": {
             "type": "object",
             "description": "Map of property names to property definitions. The object must\ninclude at least one property of type `title` (for example a\n`Name` property). Only a subset of property types are allowed\nwhen creating a database. Unsupported types, such as `status`,\nmay be added later using the update database endpoint.\n",
-            "properties": {
-              "Name": { "title": {} }
-            },
             "additionalProperties": {
               "$ref": "#/components/schemas/DatabasePropertyCreate"
             }
