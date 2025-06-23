@@ -731,7 +731,6 @@ components:
               type: string
               format: uri
     DatabasePropertyCreate:
-      type: object
       description: Allowed property definition when creating a database
       oneOf:
         - required:
