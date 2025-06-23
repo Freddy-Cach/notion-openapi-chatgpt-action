@@ -1177,6 +1177,15 @@
             "properties": {
               "select": {
                 "type": "object",
+                "properties": {
+                  "options": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  }
+                },
                 "additionalProperties": true
               }
             }
@@ -1188,6 +1197,15 @@
             "properties": {
               "multi_select": {
                 "type": "object",
+                "properties": {
+                  "options": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  }
+                },
                 "additionalProperties": true
               }
             }
