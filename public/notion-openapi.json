@@ -3,7 +3,11 @@
   "info": {
     "title": "Notion API",
     "description": "API for interacting with Notion resources such as pages and databases.",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
   },
   "servers": [
     {
@@ -15,23 +19,19 @@
     "/v1/blocks/{block_id}": {
       "delete": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "block_id",
@@ -42,27 +42,24 @@
             }
           }
         ],
-        "operationId": "deleteBlock"
+        "operationId": "deleteBlock",
+        "summary": "Delete Block"
       },
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "block_id",
@@ -73,27 +70,24 @@
             }
           }
         ],
-        "operationId": "retrieveBlock"
+        "operationId": "retrieveBlock",
+        "summary": "Retrieve Block"
       },
       "patch": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "block_id",
@@ -114,29 +108,26 @@
               }
             }
           }
-        }
+        },
+        "summary": "Update Block"
       }
     },
     "/v1/blocks/{block_id}/children": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "block_id",
@@ -147,27 +138,24 @@
             }
           }
         ],
-        "operationId": "listBlockChildren"
+        "operationId": "listBlockChildren",
+        "summary": "List Block Children"
       },
       "patch": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "block_id",
@@ -196,78 +184,69 @@
             }
           }
         },
-        "operationId": "appendBlockChildren"
+        "operationId": "appendBlockChildren",
+        "summary": "Append Block Children"
       }
     },
     "/v1/comments": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "listComments",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "List Comments"
       },
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "createComment",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Create Comment"
       }
     },
     "/v1/databases": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "createDatabase",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
         ],
         "requestBody": {
@@ -276,32 +255,61 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DatabaseCreate"
+              },
+              "examples": {
+                "basic": {
+                  "value": {
+                    "parent": {
+                      "page_id": "PAGE-ID"
+                    },
+                    "title": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "Activity Logs"
+                        }
+                      }
+                    ],
+                    "properties": {
+                      "Name": {
+                        "title": {}
+                      },
+                      "Action": {
+                        "select": {
+                          "options": []
+                        }
+                      },
+                      "Endpoint": {
+                        "multi_select": {
+                          "options": []
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
-        }
+        },
+        "summary": "Create Database"
       }
     },
     "/v1/databases/{database_id}": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "database_id",
@@ -312,27 +320,24 @@
             }
           }
         ],
-        "operationId": "retrieveDatabase"
+        "operationId": "retrieveDatabase",
+        "summary": "Retrieve Database"
       },
       "patch": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "database_id",
@@ -353,29 +358,26 @@
               }
             }
           }
-        }
+        },
+        "summary": "Update Database"
       }
     },
     "/v1/databases/{database_id}/query": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "database_id",
@@ -386,77 +388,68 @@
             }
           }
         ],
-        "operationId": "queryDatabase"
+        "operationId": "queryDatabase",
+        "summary": "Query Database"
       }
     },
     "/v1/file_uploads": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "listFileUploads",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "List File Uploads"
       },
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "createFileUpload",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Create File Upload"
       }
     },
     "/v1/file_uploads/{file_upload_id}": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -467,29 +460,26 @@
             }
           }
         ],
-        "operationId": "getFileUpload"
+        "operationId": "getFileUpload",
+        "summary": "Get File Upload"
       }
     },
     "/v1/file_uploads/{file_upload_id}/complete": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -500,29 +490,26 @@
             }
           }
         ],
-        "operationId": "completeFileUpload"
+        "operationId": "completeFileUpload",
+        "summary": "Complete File Upload"
       }
     },
     "/v1/file_uploads/{file_upload_id}/send": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -533,105 +520,93 @@
             }
           }
         ],
-        "operationId": "sendFileUpload"
+        "operationId": "sendFileUpload",
+        "summary": "Send File Upload"
       }
     },
     "/v1/oauth/introspect": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "oauthIntrospect",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Oauth Introspect"
       }
     },
     "/v1/oauth/revoke": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "oauthRevoke",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Oauth Revoke"
       }
     },
     "/v1/oauth/token": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "oauthToken",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Oauth Token"
       }
     },
     "/v1/pages": {
       "post": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "createPage",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
         ],
         "requestBody": {
@@ -643,29 +618,26 @@
               }
             }
           }
-        }
+        },
+        "summary": "Create Page"
       }
     },
     "/v1/pages/{page_id}": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "page_id",
@@ -676,27 +648,24 @@
             }
           }
         ],
-        "operationId": "retrievePage"
+        "operationId": "retrievePage",
+        "summary": "Retrieve Page"
       },
       "patch": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "page_id",
@@ -717,29 +686,26 @@
               }
             }
           }
-        }
+        },
+        "summary": "Update Page"
       }
     },
     "/v1/pages/{page_id}/properties/{property_id}": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "page_id",
@@ -758,21 +724,15 @@
             }
           }
         ],
-        "operationId": "getPageProperty"
+        "operationId": "getPageProperty",
+        "summary": "Get Page Property"
       }
     },
     "/v1/search": {
       "post": {
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
         ],
         "requestBody": {
@@ -786,86 +746,80 @@
           }
         },
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
-        "operationId": "search"
+        "operationId": "search",
+        "summary": "Search"
       }
     },
     "/v1/users": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "listUsers",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "List Users"
       }
     },
     "/v1/users/me": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "operationId": "getSelf",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           }
-        ]
+        ],
+        "summary": "Get Self"
       }
     },
     "/v1/users/{user_id}": {
       "get": {
         "responses": {
-          "default": {
-            "description": "Default response"
-          },
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/parameters/NotionVersion"
           },
           {
             "name": "user_id",
@@ -876,7 +830,8 @@
             }
           }
         ],
-        "operationId": "getUser"
+        "operationId": "getUser",
+        "summary": "Get User"
       }
     }
   },
@@ -1048,16 +1003,9 @@
           "parent": {
             "type": "object",
             "required": [
-              "type",
               "page_id"
             ],
             "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "page_id"
-                ]
-              },
               "page_id": {
                 "type": "string"
               }
@@ -1097,7 +1045,17 @@
           },
           "properties": {
             "type": "object",
-            "description": "Map of property names to property definitions. The object must\ninclude at least one property of type `title` (for example a\n`Name` property). Only a subset of property types are allowed\nwhen creating a database. Unsupported types, such as `status`,\nmay be added later using the update database endpoint.\n",
+            "description": "Map of database fields",
+            "example": {
+              "Name": {
+                "title": {}
+              },
+              "Action": {
+                "select": {
+                  "options": []
+                }
+              }
+            },
             "additionalProperties": {
               "$ref": "#/components/schemas/DatabasePropertyCreate"
             }
@@ -1226,7 +1184,9 @@
               "title": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1236,7 +1196,9 @@
               "rich_text": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1246,7 +1208,9 @@
               "number": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1264,7 +1228,9 @@
                 },
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1282,7 +1248,9 @@
                 },
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1292,7 +1260,9 @@
               "date": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1302,7 +1272,9 @@
               "people": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1312,7 +1284,9 @@
               "files": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1322,7 +1296,9 @@
               "checkbox": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1332,7 +1308,9 @@
               "url": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1342,7 +1320,9 @@
               "email": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           },
           {
             "required": [
@@ -1352,7 +1332,9 @@
               "phone_number": {
                 "additionalProperties": true
               }
-            }
+            },
+            "type": "object",
+            "additionalProperties": true
           }
         ]
       },
