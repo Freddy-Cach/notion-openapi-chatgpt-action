@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: "3.1.0"
 info:
   title: Notion API
   description: API for interacting with Notion resources such as pages and databases.
@@ -20,7 +20,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: block_id
         in: path
@@ -40,7 +40,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: block_id
         in: path
@@ -60,7 +60,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: block_id
         in: path
@@ -87,7 +87,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: block_id
         in: path
@@ -107,7 +107,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: block_id
         in: path
@@ -140,7 +140,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
     post:
       responses:
@@ -155,7 +155,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/databases:
     post:
@@ -171,7 +171,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       requestBody:
         required: true
@@ -192,7 +192,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: database_id
         in: path
@@ -212,7 +212,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: database_id
         in: path
@@ -239,7 +239,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: database_id
         in: path
@@ -261,7 +261,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
     post:
       responses:
@@ -276,7 +276,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/file_uploads/{file_upload_id}:
     get:
@@ -291,7 +291,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -312,7 +312,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -333,7 +333,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: file_upload_id
         in: path
@@ -355,7 +355,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/oauth/revoke:
     post:
@@ -371,7 +371,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/oauth/token:
     post:
@@ -387,7 +387,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/pages:
     post:
@@ -403,7 +403,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       requestBody:
         required: true
@@ -424,7 +424,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: page_id
         in: path
@@ -444,7 +444,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: page_id
         in: path
@@ -471,7 +471,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: page_id
         in: path
@@ -492,7 +492,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       requestBody:
         required: false
@@ -520,7 +520,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/users/me:
     get:
@@ -536,7 +536,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
   /v1/users/{user_id}:
     get:
@@ -551,7 +551,7 @@ paths:
         required: true
         schema:
           type: string
-          default: '2022-06-28'
+          default: "2022-06-28"
         description: Notion API version
       - name: user_id
         in: path
@@ -567,14 +567,14 @@ components:
       required: true
       schema:
         type: string
-        default: '2022-06-28'
+        default: "2022-06-28"
       description: Notion API version
   headers:
     NotionVersion:
       required: true
       schema:
         type: string
-        default: '2022-06-28'
+        default: "2022-06-28"
       description: Notion API version
   schemas:
     Page:
