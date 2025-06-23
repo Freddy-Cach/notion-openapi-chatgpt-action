@@ -1098,6 +1098,9 @@
           "properties": {
             "type": "object",
             "description": "Map of property names to property definitions. The object must\ninclude at least one property of type `title` (for example a\n`Name` property). Only a subset of property types are allowed\nwhen creating a database. Unsupported types, such as `status`,\nmay be added later using the update database endpoint.\n",
+            "properties": {
+              "Name": { "title": {} }
+            },
             "additionalProperties": {
               "$ref": "#/components/schemas/DatabasePropertyCreate"
             }
@@ -1224,7 +1227,6 @@
             ],
             "properties": {
               "title": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1235,7 +1237,6 @@
             ],
             "properties": {
               "rich_text": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1246,7 +1247,6 @@
             ],
             "properties": {
               "number": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1257,12 +1257,10 @@
             ],
             "properties": {
               "select": {
-                "type": "object",
                 "properties": {
                   "options": {
                     "type": "array",
                     "items": {
-                      "type": "object",
                       "additionalProperties": true
                     }
                   }
@@ -1277,12 +1275,10 @@
             ],
             "properties": {
               "multi_select": {
-                "type": "object",
                 "properties": {
                   "options": {
                     "type": "array",
                     "items": {
-                      "type": "object",
                       "additionalProperties": true
                     }
                   }
@@ -1297,7 +1293,6 @@
             ],
             "properties": {
               "date": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1308,7 +1303,6 @@
             ],
             "properties": {
               "people": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1319,7 +1313,6 @@
             ],
             "properties": {
               "files": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1330,7 +1323,6 @@
             ],
             "properties": {
               "checkbox": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1341,7 +1333,6 @@
             ],
             "properties": {
               "url": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1352,7 +1343,6 @@
             ],
             "properties": {
               "email": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
@@ -1363,7 +1353,6 @@
             ],
             "properties": {
               "phone_number": {
-                "type": "object",
                 "additionalProperties": true
               }
             }
