@@ -121,7 +121,6 @@
             "description": "Default response"
           }
         },
-        "operationId": "createComment"
       }
     },
     "/v1/databases": {
