@@ -12,6 +12,33 @@ https://github.com/user-attachments/assets/3713f886-cd77-49c5-b223-89a4942a4068
 4. Head over to Notion Integrations and copy over your API-Key
 5. Ensure this key has access to the workspace pages & databases you'd like to reference / update
 
+## Creating a Database
+When using `POST /v1/databases` you must include a `properties` object. At least one property needs a `title` type. Here's a minimal example:
+
+```json
+{
+  "parent": { "type": "page_id", "page_id": "YOUR_PAGE_ID" },
+  "title": [{ "type": "text", "text": { "content": "Activity Logs" } }],
+  "icon": { "type": "emoji", "emoji": "🪵" },
+  "properties": {
+    "Log": { "title": {} }
+  }
+}
+```
+
+Add additional fields later with `PATCH /v1/databases/{database_id}`:
+
+```json
+{
+  "properties": {
+    "Prompt": { "rich_text": {} },
+    "Action": { "select": {} },
+    "Timestamp": { "date": {} },
+    "HTTP Status": { "number": {} }
+  }
+}
+```
+
 ## Raw Notion OpenAPI spec
 Alternatively, you could copy this raw YAML (~300 lines)
 ```yaml
