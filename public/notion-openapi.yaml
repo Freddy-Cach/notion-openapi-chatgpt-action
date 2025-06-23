@@ -179,6 +179,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatabaseCreate'
+            example:
+              parent:
+                type: page_id
+                page_id: "YOUR_PAGE_ID"
+              title:
+                - type: text
+                  text:
+                    content: "Activity Logs"
+              properties:
+                Log:
+                  title: {}
   /v1/databases/{database_id}:
     get:
       responses:
