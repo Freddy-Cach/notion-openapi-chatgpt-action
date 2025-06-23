@@ -98,6 +98,17 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - children
+              properties:
+                children:
+                  $ref: '#/components/schemas/BlockChildren'
       operationId: appendBlockChildren
   /v1/comments:
     get:

@@ -153,6 +153,22 @@
             }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["children"],
+                "properties": {
+                  "children": {
+                    "$ref": "#/components/schemas/BlockChildren"
+                  }
+                }
+              }
+            }
+          }
+        },
         "operationId": "appendBlockChildren"
       }
     },
