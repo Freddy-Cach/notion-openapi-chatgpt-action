@@ -1135,7 +1135,6 @@
         }
       },
       "DatabasePropertyCreate": {
-        "type": "object",
         "description": "Allowed property definition when creating a database",
         "oneOf": [
           {
