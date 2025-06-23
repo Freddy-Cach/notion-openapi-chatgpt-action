@@ -12,6 +12,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -30,6 +32,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -48,6 +52,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -73,6 +79,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -91,6 +99,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -121,6 +131,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: listComments
       parameters:
       - name: Notion-Version
@@ -134,6 +146,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: createComment
       parameters:
       - name: Notion-Version
@@ -148,6 +162,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: createDatabase
       parameters:
       - name: Notion-Version
@@ -168,6 +184,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -186,6 +204,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -211,6 +231,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -230,6 +252,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: listFileUploads
       parameters:
       - name: Notion-Version
@@ -243,6 +267,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: createFileUpload
       parameters:
       - name: Notion-Version
@@ -257,6 +283,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -276,6 +304,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -295,6 +325,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -314,6 +346,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: oauthIntrospect
       parameters:
       - name: Notion-Version
@@ -328,6 +362,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: oauthRevoke
       parameters:
       - name: Notion-Version
@@ -342,6 +378,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: oauthToken
       parameters:
       - name: Notion-Version
@@ -356,6 +394,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: createPage
       parameters:
       - name: Notion-Version
@@ -376,6 +416,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -394,6 +436,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -419,6 +463,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header
@@ -457,12 +503,16 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: search
   /v1/users:
     get:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: listUsers
       parameters:
       - name: Notion-Version
@@ -477,6 +527,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       operationId: getSelf
       parameters:
       - name: Notion-Version
@@ -491,6 +543,8 @@ paths:
       responses:
         default:
           description: Default response
+        200:
+          description: OK
       parameters:
       - name: Notion-Version
         in: header

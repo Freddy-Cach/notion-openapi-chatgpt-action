@@ -17,6 +17,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -45,6 +48,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -73,6 +79,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -113,6 +122,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -141,6 +153,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -189,6 +204,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "listComments",
@@ -209,6 +227,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "createComment",
@@ -231,6 +252,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "createDatabase",
@@ -263,6 +287,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -291,6 +318,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -331,6 +361,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -361,6 +394,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "listFileUploads",
@@ -381,6 +417,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "createFileUpload",
@@ -403,6 +442,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -433,6 +475,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -463,6 +508,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -493,6 +541,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "oauthIntrospect",
@@ -515,6 +566,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "oauthRevoke",
@@ -537,6 +591,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "oauthToken",
@@ -559,6 +616,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "createPage",
@@ -591,6 +651,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -619,6 +682,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -659,6 +725,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
@@ -719,6 +788,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "search"
@@ -729,6 +801,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "listUsers",
@@ -751,6 +826,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "operationId": "getSelf",
@@ -773,6 +851,9 @@
         "responses": {
           "default": {
             "description": "Default response"
+          },
+          "200": {
+            "description": "OK"
           }
         },
         "parameters": [
