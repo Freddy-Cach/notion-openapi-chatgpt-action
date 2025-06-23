@@ -315,6 +315,15 @@
               "examples": {
                 "basic": {
                   "value": {
+                    "properties": {
+                      "Name": {
+                        "title": {}
+                      }
+                    }
+                  }
+                },
+                "create-activity-logs": {
+                  "value": {
                     "parent": {
                       "type": "page_id",
                       "page_id": "<PAGE_ID>"
@@ -330,6 +339,19 @@
                     "properties": {
                       "Name": {
                         "title": {}
+                      },
+                      "Action": {
+                        "select": {
+                          "options": []
+                        }
+                      },
+                      "Endpoint": {
+                        "multi_select": {
+                          "options": []
+                        }
+                      },
+                      "Timestamp": {
+                        "date": {}
                       }
                     }
                   }
@@ -1016,16 +1038,6 @@
     }
   },
   "components": {
-    "headers": {
-      "NotionVersion": {
-        "required": true,
-        "schema": {
-          "type": "string",
-          "default": "2022-06-28"
-        },
-        "description": "Notion API version"
-      }
-    },
     "schemas": {
       "Page": {
         "type": "object",
@@ -1171,9 +1183,16 @@
           "parent": {
             "type": "object",
             "required": [
+              "type",
               "page_id"
             ],
             "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page_id"
+                ]
+              },
               "page_id": {
                 "type": "string"
               }
@@ -1212,8 +1231,7 @@
             "$ref": "#/components/schemas/FileExternal"
           },
           "properties": {
-            "type": "object",
-            "additionalProperties": true
+            "$ref": "#/components/schemas/DatabasePropertyCreate"
           }
         }
       },
@@ -1330,6 +1348,7 @@
       },
       "DatabasePropertyCreate": {
         "type": "object",
+        "properties": {},
         "additionalProperties": true,
         "description": "Any single property object allowed by Notion."
       },
