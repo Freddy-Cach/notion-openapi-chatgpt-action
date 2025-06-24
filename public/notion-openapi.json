@@ -311,60 +311,6 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DatabaseCreate"
-              },
-              "examples": {
-                "basic": {
-                  "value": {
-                    "properties": {
-                      "Name": {
-                        "type": "title",
-                        "title": {}
-                      }
-                    }
-                  }
-                },
-                "create-activity-logs": {
-                  "value": {
-                    "parent": {
-                      "type": "page_id",
-                      "page_id": "<PAGE_ID>"
-                    },
-                    "title": [
-                      {
-                        "type": "text",
-                        "text": {
-                          "content": "Activity Logs"
-                        }
-                      }
-                    ],
-                    "properties": {
-                      "Name": {
-                        "type": "title",
-                        "title": {}
-                      },
-                      "Action": {
-                        "type": "select",
-                        "select": {
-                          "options": []
-                        }
-                      },
-                      "Endpoint": {
-                        "type": "multi_select",
-                        "multi_select": {
-                          "options": []
-                        }
-                      },
-                      "Timestamp": {
-                        "type": "date",
-                        "date": {}
-                      },
-                      "HTTP Status": {
-                        "type": "number",
-                        "number": {}
-                      }
-                    }
-                  }
-                }
               }
             }
           }
@@ -383,6 +329,21 @@
           },
           "default": {
             "description": "Default response"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -418,6 +379,21 @@
           },
           "default": {
             "description": "Default response"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -465,6 +441,21 @@
           },
           "default": {
             "description": "Default response"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -488,7 +479,17 @@
           }
         ],
         "operationId": "queryDatabase",
-        "summary": "Query Database"
+        "summary": "Query Database",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatabaseQuery"
+              }
+            }
+          }
+        },
+        "description": "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
       }
     },
     "/v1/file_uploads": {
@@ -1381,6 +1382,12 @@
           "properties": {
             "type": "object",
             "additionalProperties": true
+          },
+          "is_inline": {
+            "type": "boolean"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/Parent"
           }
         }
       },
@@ -1521,8 +1528,16 @@
               "type": "object",
               "additionalProperties": true
             }
+          },
+          "start_cursor": {
+            "type": "string"
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100
           }
-        }
+        },
+        "additionalProperties": false
       },
       "DatabaseRecord": {
         "type": "object",
@@ -1585,6 +1600,66 @@
           "result_data": {
             "type": "object",
             "additionalProperties": true
+          }
+        }
+      },
+      "Parent": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "page_id"
+              },
+              "page_id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "type",
+              "page_id"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "workspace"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "Parent object for databases (page or workspace)."
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "object",
+          "status",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "error"
+            ]
+          },
+          "status": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
         }
       }
