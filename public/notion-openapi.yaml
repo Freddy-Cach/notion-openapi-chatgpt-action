@@ -7,8 +7,8 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-  - url: https://api.notion.com
-    description: Main API server
+- url: https://api.notion.com
+  description: Main API server
 paths:
   /v1/blocks/{block_id}:
     delete:
@@ -20,12 +20,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: block_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: block_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: deleteBlock
       summary: Delete Block
     get:
@@ -37,12 +43,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: block_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: block_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: retrieveBlock
       summary: Retrieve Block
     patch:
@@ -54,13 +66,26 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: block_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: block_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: updateBlock
       requestBody:
         required: true
@@ -79,12 +104,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: block_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: block_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: listBlockChildren
       summary: List Block Children
     patch:
@@ -96,13 +127,26 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: block_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: block_id
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -110,7 +154,7 @@ paths:
             schema:
               type: object
               required:
-                - children
+              - children
               properties:
                 children:
                   $ref: '#/components/schemas/BlockChildren'
@@ -127,7 +171,13 @@ paths:
           description: Default response
       operationId: listComments
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: List Comments
     post:
       responses:
@@ -139,7 +189,13 @@ paths:
           description: Default response
       operationId: createComment
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Create Comment
   /v1/databases:
     post:
@@ -152,8 +208,21 @@ paths:
           description: Default response
       operationId: createDatabase
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       requestBody:
         required: true
         content:
@@ -181,12 +250,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: database_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: database_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: retrieveDatabase
       summary: Retrieve Database
     patch:
@@ -208,13 +283,26 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: database_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: database_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: updateDatabase
       requestBody:
         required: true
@@ -243,13 +331,26 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: database_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: database_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: queryDatabase
       summary: Query Database
       requestBody:
@@ -257,8 +358,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatabaseQuery'
-      description: ⚠️ Do **not** call this endpoint if the retrieved database's `is_inline`
-        value is true.
+      description: "\u26A0\uFE0F Do **not** call this endpoint if the retrieved database's\
+        \ `is_inline` value is true."
   /v1/file_uploads:
     get:
       responses:
@@ -270,7 +371,13 @@ paths:
           description: Default response
       operationId: listFileUploads
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: List File Uploads
     post:
       responses:
@@ -282,7 +389,13 @@ paths:
           description: Default response
       operationId: createFileUpload
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Create File Upload
   /v1/file_uploads/{file_upload_id}:
     get:
@@ -294,12 +407,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: file_upload_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: file_upload_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: getFileUpload
       summary: Get File Upload
   /v1/file_uploads/{file_upload_id}/complete:
@@ -312,12 +431,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: file_upload_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: file_upload_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: completeFileUpload
       summary: Complete File Upload
   /v1/file_uploads/{file_upload_id}/send:
@@ -330,12 +455,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: file_upload_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: file_upload_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: sendFileUpload
       summary: Send File Upload
   /v1/oauth/introspect:
@@ -349,7 +480,13 @@ paths:
           description: Default response
       operationId: oauthIntrospect
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Oauth Introspect
   /v1/oauth/revoke:
     post:
@@ -362,7 +499,13 @@ paths:
           description: Default response
       operationId: oauthRevoke
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Oauth Revoke
   /v1/oauth/token:
     post:
@@ -375,7 +518,13 @@ paths:
           description: Default response
       operationId: oauthToken
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Oauth Token
   /v1/pages:
     post:
@@ -388,8 +537,21 @@ paths:
           description: Default response
       operationId: createPage
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       requestBody:
         required: true
         content:
@@ -407,12 +569,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: page_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: retrievePage
       summary: Retrieve Page
     patch:
@@ -424,13 +592,26 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: page_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: updatePage
       requestBody:
         required: true
@@ -449,24 +630,43 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: page_id
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: property_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: page_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: property_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: getPageProperty
       summary: Get Page Property
   /v1/search:
     post:
       parameters:
-        - $ref: '#/components/parameters/JsonContentType'
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Content-Type
+        in: header
+        required: true
+        description: Always application/json for Notion POST/PATCH bodies
+        schema:
+          type: string
+          enum:
+          - application/json
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       requestBody:
         required: true
         content:
@@ -501,7 +701,13 @@ paths:
           description: Default response
       operationId: listUsers
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: List Users
   /v1/users/me:
     get:
@@ -514,7 +720,13 @@ paths:
           description: Default response
       operationId: getSelf
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
       summary: Get Self
   /v1/users/{user_id}:
     get:
@@ -526,12 +738,18 @@ paths:
         default:
           description: Default response
       parameters:
-        - $ref: '#/components/parameters/NotionVersion'
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: Notion-Version
+        in: header
+        required: true
+        description: API version
+        schema:
+          type: string
+          default: '2022-06-28'
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
       operationId: getUser
       summary: Get User
 components:
@@ -539,14 +757,14 @@ components:
     Page:
       type: object
       required:
-        - object
-        - id
-        - properties
+      - object
+      - id
+      - properties
       properties:
         object:
           type: string
           enum:
-            - page
+          - page
         id:
           type: string
           format: uuid
@@ -568,38 +786,38 @@ components:
     PageCreate:
       type: object
       required:
-        - parent
-        - properties
+      - parent
+      - properties
       properties:
         parent:
           oneOf:
-            - type: object
-              required:
-                - page_id
-              properties:
-                page_id:
-                  type: string
-                  format: uuid
-            - type: object
-              required:
-                - database_id
-              properties:
-                database_id:
-                  type: string
-                  format: uuid
-            - type: object
-              required:
-                - type
+          - type: object
+            required:
+            - page_id
+            properties:
+              page_id:
+                type: string
+                format: uuid
+          - type: object
+            required:
+            - database_id
+            properties:
+              database_id:
+                type: string
+                format: uuid
+          - type: object
+            required:
+            - type
+            - workspace
+            properties:
+              type:
+                type: string
+                enum:
                 - workspace
-              properties:
-                type:
-                  type: string
-                  enum:
-                    - workspace
-                workspace:
-                  type: boolean
-                  description: Only supported for public integrations with insert_content
-                    capability
+              workspace:
+                type: boolean
+                description: Only supported for public integrations with insert_content
+                  capability
         properties:
           type: object
           properties:
@@ -626,20 +844,20 @@ components:
     DatabaseCreate:
       type: object
       required:
-        - parent
-        - title
-        - properties
+      - parent
+      - title
+      - properties
       properties:
         parent:
           type: object
           required:
-            - type
-            - page_id
+          - type
+          - page_id
           properties:
             type:
               type: string
               enum:
-                - page_id
+              - page_id
             page_id:
               type: string
         title:
@@ -650,15 +868,15 @@ components:
               type:
                 type: string
                 enum:
-                  - text
+                - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-              - type
-              - text
+            - type
+            - text
         icon:
           $ref: '#/components/schemas/IconObject'
         cover:
@@ -676,15 +894,15 @@ components:
               type:
                 type: string
                 enum:
-                  - text
+                - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-              - type
-              - text
+            - type
+            - text
         properties:
           type: object
           additionalProperties: true
@@ -694,42 +912,42 @@ components:
           $ref: '#/components/schemas/FileExternal'
     IconObject:
       oneOf:
-        - type: object
-          required:
-            - type
+      - type: object
+        required:
+        - type
+        - emoji
+        properties:
+          type:
+            type: string
+            enum:
             - emoji
-          properties:
-            type:
-              type: string
-              enum:
-                - emoji
-            emoji:
-              type: string
-        - type: object
-          required:
-            - type
+          emoji:
+            type: string
+      - type: object
+        required:
+        - type
+        - external
+        properties:
+          type:
+            type: string
+            enum:
             - external
-          properties:
-            type:
-              type: string
-              enum:
-                - external
-            external:
-              type: object
-              properties:
-                url:
-                  type: string
-                  format: uri
+          external:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
     FileExternal:
       type: object
       required:
-        - type
-        - external
+      - type
+      - external
       properties:
         type:
           type: string
           enum:
-            - external
+          - external
         external:
           type: object
           properties:
@@ -744,13 +962,13 @@ components:
     Database:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - database
+          - database
         id:
           type: string
           format: uuid
@@ -764,13 +982,13 @@ components:
     User:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - user
+          - user
         id:
           type: string
           format: uuid
@@ -798,13 +1016,13 @@ components:
     Block:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - block
+          - block
         id:
           type: string
           format: uuid
@@ -816,13 +1034,13 @@ components:
     Comment:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - comment
+          - comment
         id:
           type: string
           format: uuid
@@ -834,13 +1052,13 @@ components:
     PagePropertyItem:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - property_item
+          - property_item
         id:
           type: string
           format: uuid
@@ -867,13 +1085,13 @@ components:
     DatabaseRecord:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - database_record
+          - database_record
         id:
           type: string
           format: uuid
@@ -889,7 +1107,7 @@ components:
           type: object
           additionalProperties: true
       required:
-        - query
+      - query
       minProperties: 1
     SearchResponse:
       type: array
@@ -898,13 +1116,13 @@ components:
     SearchResult:
       type: object
       required:
-        - object
-        - id
+      - object
+      - id
       properties:
         object:
           type: string
           enum:
-            - search_result
+          - search_result
         id:
           type: string
           format: uuid
@@ -913,37 +1131,37 @@ components:
           additionalProperties: true
     Parent:
       oneOf:
-        - type: object
-          properties:
-            type:
-              const: page_id
-            page_id:
-              type: string
-              format: uuid
-          required:
-            - type
-            - page_id
-          additionalProperties: false
-        - type: object
-          properties:
-            type:
-              const: workspace
-          required:
-            - type
-          additionalProperties: false
+      - type: object
+        properties:
+          type:
+            const: page_id
+          page_id:
+            type: string
+            format: uuid
+        required:
+        - type
+        - page_id
+        additionalProperties: false
+      - type: object
+        properties:
+          type:
+            const: workspace
+        required:
+        - type
+        additionalProperties: false
       description: Parent object for databases (page or workspace).
     Error:
       type: object
       required:
-        - object
-        - status
-        - code
-        - message
+      - object
+      - status
+      - code
+      - message
       properties:
         object:
           type: string
           enum:
-            - error
+          - error
         status:
           type: integer
         code:
@@ -962,7 +1180,7 @@ components:
       schema:
         type: string
         enum:
-          - application/json
+        - application/json
       required: true
       description: Always application/json for Notion POST/PATCH bodies
     NotionVersion:
@@ -974,4 +1192,4 @@ components:
       required: true
       description: API version
 security:
-  - BearerAuth: []
+- BearerAuth: []
