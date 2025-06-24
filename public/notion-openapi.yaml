@@ -20,13 +20,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: block_id
           in: path
           required: true
@@ -43,13 +37,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: block_id
           in: path
           required: true
@@ -66,13 +54,8 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
         - name: block_id
           in: path
           required: true
@@ -96,13 +79,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: block_id
           in: path
           required: true
@@ -119,13 +96,8 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
         - name: block_id
           in: path
           required: true
@@ -155,13 +127,7 @@ paths:
           description: Default response
       operationId: listComments
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: List Comments
     post:
       responses:
@@ -173,13 +139,7 @@ paths:
           description: Default response
       operationId: createComment
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Create Comment
   /v1/databases:
     post:
@@ -192,13 +152,8 @@ paths:
           description: Default response
       operationId: createDatabase
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
       requestBody:
         required: true
         content:
@@ -206,86 +161,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DatabaseCreate'
       summary: Create Database
-    /v1/databases/{database_id}:
-      get:
-        responses:
-          '200':
-            description: OK
-          '400':
-            description: Bad request
-          '404':
-            description: Database not found or not queryable (inline?)
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                example:
-                  object: error
-                  code: object_not_found
-                  message: Database not found or not shared with integration.
-          default:
-            description: Default response
-        parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
-        - name: database_id
-          in: path
-          required: true
-          schema:
-            type: string
-      operationId: retrieveDatabase
-      summary: Retrieve Database
-      patch:
-        responses:
-          '200':
-            description: OK
-          '400':
-            description: Bad request
-          '404':
-            description: Database not found or not queryable (inline?)
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                example:
-                  object: error
-                  code: object_not_found
-                  message: Database not found or not shared with integration.
-          default:
-            description: Default response
-        parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
-        - name: database_id
-          in: path
-          required: true
-          schema:
-            type: string
-      operationId: updateDatabase
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DatabaseUpdate'
-      summary: Update Database
-  /v1/databases/{database_id}/query:
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DatabaseQuery'
+  /v1/databases/{database_id}:
+    get:
       responses:
         '200':
           description: OK
@@ -304,13 +181,70 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
+        - $ref: '#/components/parameters/NotionVersion'
+        - name: database_id
+          in: path
           required: true
           schema:
             type: string
-            default: '2022-06-28'
-          description: Notion API version
+      operationId: retrieveDatabase
+      summary: Retrieve Database
+    patch:
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '404':
+          description: Database not found or not queryable (inline?)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                object: error
+                code: object_not_found
+                message: Database not found or not shared with integration.
+        default:
+          description: Default response
+      parameters:
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
+        - name: database_id
+          in: path
+          required: true
+          schema:
+            type: string
+      operationId: updateDatabase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseUpdate'
+      summary: Update Database
+  /v1/databases/{database_id}/query:
+    post:
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '404':
+          description: Database not found or not queryable (inline?)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                object: error
+                code: object_not_found
+                message: Database not found or not shared with integration.
+        default:
+          description: Default response
+      parameters:
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
         - name: database_id
           in: path
           required: true
@@ -318,7 +252,13 @@ paths:
             type: string
       operationId: queryDatabase
       summary: Query Database
-      description: "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseQuery'
+      description: ⚠️ Do **not** call this endpoint if the retrieved database's `is_inline`
+        value is true.
   /v1/file_uploads:
     get:
       responses:
@@ -330,13 +270,7 @@ paths:
           description: Default response
       operationId: listFileUploads
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: List File Uploads
     post:
       responses:
@@ -348,13 +282,7 @@ paths:
           description: Default response
       operationId: createFileUpload
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Create File Upload
   /v1/file_uploads/{file_upload_id}:
     get:
@@ -366,13 +294,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: file_upload_id
           in: path
           required: true
@@ -390,13 +312,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: file_upload_id
           in: path
           required: true
@@ -414,13 +330,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: file_upload_id
           in: path
           required: true
@@ -439,13 +349,7 @@ paths:
           description: Default response
       operationId: oauthIntrospect
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Oauth Introspect
   /v1/oauth/revoke:
     post:
@@ -458,13 +362,7 @@ paths:
           description: Default response
       operationId: oauthRevoke
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Oauth Revoke
   /v1/oauth/token:
     post:
@@ -477,13 +375,7 @@ paths:
           description: Default response
       operationId: oauthToken
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Oauth Token
   /v1/pages:
     post:
@@ -496,13 +388,8 @@ paths:
           description: Default response
       operationId: createPage
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
       requestBody:
         required: true
         content:
@@ -520,13 +407,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: page_id
           in: path
           required: true
@@ -543,13 +424,8 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
         - name: page_id
           in: path
           required: true
@@ -573,13 +449,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: page_id
           in: path
           required: true
@@ -595,15 +465,10 @@ paths:
   /v1/search:
     post:
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/JsonContentType'
+        - $ref: '#/components/parameters/NotionVersion'
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -612,7 +477,15 @@ paths:
         '200':
           description: OK
         '400':
-          description: Bad request
+          description: Validation error (malformed or over-size search payload)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                object: error
+                code: validation_error
+                message: Invalid search payload
         default:
           description: Default response
       operationId: search
@@ -628,13 +501,7 @@ paths:
           description: Default response
       operationId: listUsers
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: List Users
   /v1/users/me:
     get:
@@ -647,13 +514,7 @@ paths:
           description: Default response
       operationId: getSelf
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
       summary: Get Self
   /v1/users/{user_id}:
     get:
@@ -665,13 +526,7 @@ paths:
         default:
           description: Default response
       parameters:
-        - name: Notion-Version
-          in: header
-          required: true
-          schema:
-            type: string
-            default: '2022-06-28'
-          description: Notion API version
+        - $ref: '#/components/parameters/NotionVersion'
         - name: user_id
           in: path
           required: true
@@ -698,10 +553,6 @@ components:
         properties:
           type: object
           additionalProperties: true
-        is_inline:
-          type: boolean
-        parent:
-          $ref: '#/components/schemas/Parent'
     PageUpdate:
       type: object
       properties:
@@ -910,27 +761,6 @@ components:
           type: boolean
         parent:
           $ref: '#/components/schemas/Parent'
-    Parent:
-      oneOf:
-        - type: object
-          properties:
-            type:
-              const: page_id
-            page_id:
-              type: string
-              format: uuid
-          required:
-            - type
-            - page_id
-          additionalProperties: false
-        - type: object
-          properties:
-            type:
-              const: workspace
-          required:
-            - type
-          additionalProperties: false
-      description: Parent object for databases (page or workspace).
     User:
       type: object
       required:
@@ -1050,9 +880,6 @@ components:
         record_data:
           type: object
           additionalProperties: true
-    Parent:
-      oneOf:
-        - type: object
     SearchRequest:
       type: object
       properties:
@@ -1061,6 +888,9 @@ components:
         sort:
           type: object
           additionalProperties: true
+      required:
+        - query
+      minProperties: 1
     SearchResponse:
       type: array
       items:
@@ -1081,6 +911,27 @@ components:
         result_data:
           type: object
           additionalProperties: true
+    Parent:
+      oneOf:
+        - type: object
+          properties:
+            type:
+              const: page_id
+            page_id:
+              type: string
+              format: uuid
+          required:
+            - type
+            - page_id
+          additionalProperties: false
+        - type: object
+          properties:
+            type:
+              const: workspace
+          required:
+            - type
+          additionalProperties: false
+      description: Parent object for databases (page or workspace).
     Error:
       type: object
       required:
@@ -1104,5 +955,23 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+  parameters:
+    JsonContentType:
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+        enum:
+          - application/json
+      required: true
+      description: Always application/json for Notion POST/PATCH bodies
+    NotionVersion:
+      name: Notion-Version
+      in: header
+      schema:
+        type: string
+        default: '2022-06-28'
+      required: true
+      description: API version
 security:
   - BearerAuth: []
