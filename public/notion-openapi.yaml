@@ -3,52 +3,81 @@ info:
   title: Notion API
   description: API for interacting with Notion resources such as pages and databases.
   version: 1.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
 servers:
-- url: https://api.notion.com
-  description: Main API server
+  - url: https://api.notion.com
+    description: Main API server
 paths:
   /v1/blocks/{block_id}:
     delete:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: block_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: block_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: deleteBlock
+      summary: Delete Block
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: block_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: block_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: retrieveBlock
+      summary: Retrieve Block
     patch:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: block_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: block_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: updateBlock
       requestBody:
         required: true
@@ -56,34 +85,52 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BlockUpdate'
+      summary: Update Block
   /v1/blocks/{block_id}/children:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: block_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: block_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: listBlockChildren
+      summary: List Block Children
     patch:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: block_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: block_id
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -91,89 +138,153 @@ paths:
             schema:
               type: object
               required:
-              - children
+                - children
               properties:
                 children:
                   $ref: '#/components/schemas/BlockChildren'
       operationId: appendBlockChildren
+      summary: Append Block Children
   /v1/comments:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: listComments
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: List Comments
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: createComment
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Create Comment
   /v1/databases:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: createDatabase
-      description: "Defines the schema and metadata for the new Notion database"
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [parent, title, properties]
-              properties:
-                parent:
-                  $ref: "#/components/schemas/ParentObject"
-                title:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/RichText"
-                icon:
-                  $ref: "#/components/schemas/IconObject"
-                properties:
-                  type: object
-                  additionalProperties:
-                    $ref: "#/components/schemas/PropertySchema"
+              $ref: '#/components/schemas/DatabaseCreate'
+            examples:
+              basic:
+                value:
+                  properties:
+                    Name:
+                      type: title
+                      title: {}
+              create-activity-logs:
+                value:
+                  parent:
+                    type: page_id
+                    page_id: <PAGE_ID>
+                  title:
+                    - type: text
+                      text:
+                        content: Activity Logs
+                  properties:
+                    Name:
+                      type: title
+                      title: {}
+                    Action:
+                      type: select
+                      select:
+                        options: []
+                    Endpoint:
+                      type: multi_select
+                      multi_select:
+                        options: []
+                    Timestamp:
+                      type: date
+                      date: {}
+                    HTTP Status:
+                      type: number
+                      number: {}
+      summary: Create Database
   /v1/databases/{database_id}:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: database_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: database_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: retrieveDatabase
+      summary: Retrieve Database
     patch:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: database_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: database_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: updateDatabase
       requestBody:
         required: true
@@ -181,159 +292,267 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatabaseUpdate'
+      summary: Update Database
   /v1/databases/{database_id}/query:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: database_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: database_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: queryDatabase
+      summary: Query Database
   /v1/file_uploads:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: listFileUploads
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: List File Uploads
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: createFileUpload
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Create File Upload
   /v1/file_uploads/{file_upload_id}:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: file_upload_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: file_upload_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: getFileUpload
+      summary: Get File Upload
   /v1/file_uploads/{file_upload_id}/complete:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: file_upload_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: file_upload_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: completeFileUpload
+      summary: Complete File Upload
   /v1/file_uploads/{file_upload_id}/send:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: file_upload_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: file_upload_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: sendFileUpload
+      summary: Send File Upload
   /v1/oauth/introspect:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: oauthIntrospect
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Oauth Introspect
   /v1/oauth/revoke:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: oauthRevoke
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Oauth Revoke
   /v1/oauth/token:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: oauthToken
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Oauth Token
   /v1/pages:
     post:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: createPage
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/PageCreate'
+      summary: Create Page
   /v1/pages/{page_id}:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: page_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: page_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: retrievePage
+      summary: Retrieve Page
     patch:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: page_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: page_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: updatePage
       requestBody:
         required: true
@@ -341,30 +560,46 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PageUpdate'
+      summary: Update Page
   /v1/pages/{page_id}/properties/{property_id}:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: page_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: property_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: page_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: property_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: getPageProperty
+      summary: Get Page Property
   /v1/search:
     post:
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
       requestBody:
         required: false
         content:
@@ -372,88 +607,101 @@ paths:
             schema:
               $ref: '#/components/schemas/SearchRequest'
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: search
+      summary: Search
   /v1/users:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: listUsers
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: List Users
   /v1/users/me:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       operationId: getSelf
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+      summary: Get Self
   /v1/users/{user_id}:
     get:
       responses:
-        default:
-          description: Default response
         '200':
           description: OK
+        '400':
+          description: Bad request
+        default:
+          description: Default response
       parameters:
-      - $ref: "#/components/parameters/NotionVersionHeader"
-      - name: user_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: Notion-Version
+          in: header
+          required: true
+          schema:
+            type: string
+            default: '2022-06-28'
+          description: Notion API version
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
       operationId: getUser
+      summary: Get User
 components:
-  headers:
-    NotionVersion:
-      required: true
-      schema:
-        type: string
-        default: "2022-06-28"
-      description: Notion API version
-  parameters:
-    NotionVersionHeader:
-      name: Notion-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: "2022-06-28"
   schemas:
     Page:
       type: object
       required:
-      - object
-      - id
-      - properties
+        - object
+        - id
+        - properties
       properties:
         object:
           type: string
           enum:
-          - page
+            - page
         id:
           type: string
           format: uuid
         properties:
           type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DatabasePropertyCreate'
+          additionalProperties: true
     PageUpdate:
       type: object
       properties:
         properties:
           type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DatabasePropertyCreate'
+          additionalProperties: true
         archived:
           type: boolean
         icon:
@@ -463,38 +711,38 @@ components:
     PageCreate:
       type: object
       required:
-      - parent
-      - properties
+        - parent
+        - properties
       properties:
         parent:
           oneOf:
-          - type: object
-            required:
-            - page_id
-            properties:
-              page_id:
-                type: string
-                format: uuid
-          - type: object
-            required:
-            - database_id
-            properties:
-              database_id:
-                type: string
-                format: uuid
-          - type: object
-            required:
-            - type
-            - workspace
-            properties:
-              type:
-                type: string
-                enum:
+            - type: object
+              required:
+                - page_id
+              properties:
+                page_id:
+                  type: string
+                  format: uuid
+            - type: object
+              required:
+                - database_id
+              properties:
+                database_id:
+                  type: string
+                  format: uuid
+            - type: object
+              required:
+                - type
                 - workspace
-              workspace:
-                type: boolean
-                description: Only supported for public integrations with insert_content
-                  capability
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - workspace
+                workspace:
+                  type: boolean
+                  description: Only supported for public integrations with insert_content
+                    capability
         properties:
           type: object
           properties:
@@ -521,21 +769,20 @@ components:
     DatabaseCreate:
       type: object
       required:
-      - parent
-      - title
-      - properties
-      description: "Defines the schema and metadata for the new Notion database"
+        - parent
+        - title
+        - properties
       properties:
         parent:
           type: object
           required:
-          - type
-          - page_id
+            - type
+            - page_id
           properties:
             type:
               type: string
               enum:
-              - page_id
+                - page_id
             page_id:
               type: string
         title:
@@ -546,22 +793,21 @@ components:
               type:
                 type: string
                 enum:
-                - text
+                  - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-            - type
-            - text
-        properties:
-          type: object
-          additionalProperties: true
+              - type
+              - text
         icon:
           $ref: '#/components/schemas/IconObject'
         cover:
           $ref: '#/components/schemas/FileExternal'
+        properties:
+          $ref: '#/components/schemas/DatabasePropertyCreate'
     DatabaseUpdate:
       type: object
       properties:
@@ -573,61 +819,60 @@ components:
               type:
                 type: string
                 enum:
-                - text
+                  - text
               text:
                 type: object
                 properties:
                   content:
                     type: string
             required:
-            - type
-            - text
+              - type
+              - text
         properties:
           type: object
-          additionalProperties:
-            $ref: '#/components/schemas/DatabasePropertyCreate'
+          additionalProperties: true
         icon:
           $ref: '#/components/schemas/IconObject'
         cover:
           $ref: '#/components/schemas/FileExternal'
     IconObject:
       oneOf:
-      - type: object
-        required:
-        - type
-        - emoji
-        properties:
-          type:
-            type: string
-            enum:
+        - type: object
+          required:
+            - type
             - emoji
-          emoji:
-            type: string
-      - type: object
-        required:
-        - type
-        - external
-        properties:
-          type:
-            type: string
-            enum:
+          properties:
+            type:
+              type: string
+              enum:
+                - emoji
+            emoji:
+              type: string
+        - type: object
+          required:
+            - type
             - external
-          external:
-            type: object
-            properties:
-              url:
-                type: string
-                format: uri
+          properties:
+            type:
+              type: string
+              enum:
+                - external
+            external:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
     FileExternal:
       type: object
       required:
-      - type
-      - external
+        - type
+        - external
       properties:
         type:
           type: string
           enum:
-          - external
+            - external
         external:
           type: object
           properties:
@@ -636,77 +881,19 @@ components:
               format: uri
     DatabasePropertyCreate:
       type: object
+      properties: {}
       additionalProperties: true
       description: Any single property object allowed by Notion.
-    PropertySchema:
-      type: object
-      required: [type]
-      properties:
-        type:
-          type: string
-        title:
-          type: object
-        rich_text:
-          type: object
-        number:
-          type: object
-        select:
-          type: object
-        multi_select:
-          type: object
-        date:
-          type: object
-        people:
-          type: object
-        files:
-          type: object
-        checkbox:
-          type: object
-        url:
-          type: object
-        email:
-          type: object
-        phone_number:
-          type: object
-        formula:
-          $ref: "#/components/schemas/FormulaProperty"
-        relation:
-          $ref: "#/components/schemas/RelationProperty"
-        rollup:
-          $ref: "#/components/schemas/RollupProperty"
-        created_time:
-          type: object
-        created_by:
-          type: object
-        last_edited_time:
-          type: object
-        last_edited_by:
-          type: object
-    ParentObject:
-      type: object
-      additionalProperties: true
-    RichText:
-      type: object
-      additionalProperties: true
-    FormulaProperty:
-      type: object
-      additionalProperties: true
-    RelationProperty:
-      type: object
-      additionalProperties: true
-    RollupProperty:
-      type: object
-      additionalProperties: true
     Database:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - database
+            - database
         id:
           type: string
           format: uuid
@@ -716,13 +903,13 @@ components:
     User:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - user
+            - user
         id:
           type: string
           format: uuid
@@ -733,7 +920,8 @@ components:
           format: uri
     BlockChildren:
       type: array
-      description: Collection of child blocks.
+      description: Children cannot include a child_database block. Use the database
+        creation endpoint instead.
       items:
         $ref: '#/components/schemas/Block'
     BlockUpdate:
@@ -749,13 +937,13 @@ components:
     Block:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - block
+            - block
         id:
           type: string
           format: uuid
@@ -767,13 +955,13 @@ components:
     Comment:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - comment
+            - comment
         id:
           type: string
           format: uuid
@@ -785,13 +973,13 @@ components:
     PagePropertyItem:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - property_item
+            - property_item
         id:
           type: string
           format: uuid
@@ -812,13 +1000,13 @@ components:
     DatabaseRecord:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - database_record
+            - database_record
         id:
           type: string
           format: uuid
@@ -840,13 +1028,13 @@ components:
     SearchResult:
       type: object
       required:
-      - object
-      - id
+        - object
+        - id
       properties:
         object:
           type: string
           enum:
-          - search_result
+            - search_result
         id:
           type: string
           format: uuid
@@ -859,4 +1047,4 @@ components:
       scheme: bearer
       bearerFormat: JWT
 security:
-- BearerAuth: []
+  - BearerAuth: []
