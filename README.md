@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/3713f886-cd77-49c5-b223-89a4942a4068
 5. Ensure this key has access to the workspace pages & databases you'd like to reference / update
 
 ## Creating a Database
-When using `POST /v1/databases` you must include a `properties` object. At least one property needs a `title` type. Here's a minimal example:
+When using `POST /databases` you must include a `properties` object. At least one property needs a `title` type. Here's a minimal example:
 
 ```json
 {
@@ -31,7 +31,7 @@ people, files, checkbox, url, email, and phone_number) may be included at
 creation time. More advanced types like `status`, `formula`, and `rollup` must be
 added later using the update endpoint.
 
-Add additional fields later with `PATCH /v1/databases/{database_id}`:
+Add additional fields later with `PATCH /databases/{database_id}`:
 
 ```json
 {
@@ -56,78 +56,78 @@ servers:
 - url: https://api.notion.com/v1
   description: Main API server
 paths:
-  /v1/blocks/{block_id}:
+  /blocks/{block_id}:
     delete:
       responses: {}
     get:
       responses: {}
     patch:
       responses: {}
-  /v1/blocks/{block_id}/children:
+  /blocks/{block_id}/children:
     get:
       responses: {}
     patch:
       responses: {}
-  /v1/comments:
+  /comments:
     get:
       responses: {}
     post:
       responses: {}
-  /v1/databases:
+  /databases:
     post:
       responses: {}
-  /v1/databases/{database_id}:
-    get:
-      responses: {}
-    patch:
-      responses: {}
-  /v1/databases/{database_id}/query:
-    post:
-      responses: {}
-  /v1/file_uploads:
-    get:
-      responses: {}
-    post:
-      responses: {}
-  /v1/file_uploads/{file_upload_id}:
-    get:
-      responses: {}
-  /v1/file_uploads/{file_upload_id}/complete:
-    post:
-      responses: {}
-  /v1/file_uploads/{file_upload_id}/send:
-    post:
-      responses: {}
-  /v1/oauth/introspect:
-    post:
-      responses: {}
-  /v1/oauth/revoke:
-    post:
-      responses: {}
-  /v1/oauth/token:
-    post:
-      responses: {}
-  /v1/pages:
-    post:
-      responses: {}
-  /v1/pages/{page_id}:
+  /databases/{database_id}:
     get:
       responses: {}
     patch:
       responses: {}
-  /v1/pages/{page_id}/properties/{property_id}:
-    get:
-      responses: {}
-  /v1/search:
+  /databases/{database_id}/query:
     post:
       responses: {}
-  /v1/users:
+  /file_uploads:
     get:
       responses: {}
-  /v1/users/me:
+    post:
+      responses: {}
+  /file_uploads/{file_upload_id}:
     get:
       responses: {}
-  /v1/users/{user_id}:
+  /file_uploads/{file_upload_id}/complete:
+    post:
+      responses: {}
+  /file_uploads/{file_upload_id}/send:
+    post:
+      responses: {}
+  /oauth/introspect:
+    post:
+      responses: {}
+  /oauth/revoke:
+    post:
+      responses: {}
+  /oauth/token:
+    post:
+      responses: {}
+  /pages:
+    post:
+      responses: {}
+  /pages/{page_id}:
+    get:
+      responses: {}
+    patch:
+      responses: {}
+  /pages/{page_id}/properties/{property_id}:
+    get:
+      responses: {}
+  /search:
+    post:
+      responses: {}
+  /users:
+    get:
+      responses: {}
+  /users/me:
+    get:
+      responses: {}
+  /users/{user_id}:
     get:
       responses: {}
 components:
@@ -418,7 +418,7 @@ If you see a 400 `validation_error` complaining that `body.properties` should be
 - `parent` is present and correctly specifies the parent page ID.
 - `title` is an array containing at least one `text` object.
 - `properties` is a JSON object mapping property names to valid property definitions.
-- Only creation-allowed property types are used; advanced types can be added later with `PATCH /v1/databases/{id}`.
+- Only creation-allowed property types are used; advanced types can be added later with `PATCH /databases/{id}`.
 - The `Notion-Version` header is included.
 
 Following these rules prevents those errors and allows the database to be created successfully.

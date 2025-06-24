@@ -11,12 +11,12 @@
   },
   "servers": [
     {
-      "url": "https://api.notion.com",
+      "url": "https://api.notion.com/v1",
       "description": "Main API server"
     }
   ],
   "paths": {
-    "/v1/blocks/{block_id}": {
+    "/blocks/{block_id}": {
       "delete": {
         "responses": {
           "200": {
@@ -145,7 +145,7 @@
         "summary": "Update Block"
       }
     },
-    "/v1/blocks/{block_id}/children": {
+    "/blocks/{block_id}/children": {
       "get": {
         "responses": {
           "200": {
@@ -247,7 +247,7 @@
         "summary": "Append Block Children"
       }
     },
-    "/v1/comments": {
+    "/comments": {
       "get": {
         "responses": {
           "200": {
@@ -303,7 +303,7 @@
         "summary": "Create Comment"
       }
     },
-    "/v1/databases": {
+    "/databases": {
       "post": {
         "responses": {
           "200": {
@@ -354,7 +354,7 @@
         "summary": "Create Database"
       }
     },
-    "/v1/databases/{database_id}": {
+    "/databases/{database_id}": {
       "get": {
         "responses": {
           "200": {
@@ -478,7 +478,7 @@
         "summary": "Update Database"
       }
     },
-    "/v1/databases/{database_id}/query": {
+    "/databases/{database_id}/query": {
       "post": {
         "responses": {
           "200": {
@@ -552,7 +552,7 @@
         "description": "\u26a0\ufe0f Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
       }
     },
-    "/v1/file_uploads": {
+    "/file_uploads": {
       "get": {
         "responses": {
           "200": {
@@ -608,7 +608,7 @@
         "summary": "Create File Upload"
       }
     },
-    "/v1/file_uploads/{file_upload_id}": {
+    "/file_uploads/{file_upload_id}": {
       "get": {
         "responses": {
           "200": {
@@ -645,7 +645,7 @@
         "summary": "Get File Upload"
       }
     },
-    "/v1/file_uploads/{file_upload_id}/complete": {
+    "/file_uploads/{file_upload_id}/complete": {
       "post": {
         "responses": {
           "200": {
@@ -682,7 +682,7 @@
         "summary": "Complete File Upload"
       }
     },
-    "/v1/file_uploads/{file_upload_id}/send": {
+    "/file_uploads/{file_upload_id}/send": {
       "post": {
         "responses": {
           "200": {
@@ -719,7 +719,7 @@
         "summary": "Send File Upload"
       }
     },
-    "/v1/oauth/introspect": {
+    "/oauth/introspect": {
       "post": {
         "responses": {
           "200": {
@@ -748,7 +748,7 @@
         "summary": "Oauth Introspect"
       }
     },
-    "/v1/oauth/revoke": {
+    "/oauth/revoke": {
       "post": {
         "responses": {
           "200": {
@@ -777,7 +777,7 @@
         "summary": "Oauth Revoke"
       }
     },
-    "/v1/oauth/token": {
+    "/oauth/token": {
       "post": {
         "responses": {
           "200": {
@@ -806,7 +806,7 @@
         "summary": "Oauth Token"
       }
     },
-    "/v1/pages": {
+    "/pages": {
       "post": {
         "responses": {
           "200": {
@@ -857,7 +857,7 @@
         "summary": "Create Page"
       }
     },
-    "/v1/pages/{page_id}": {
+    "/pages/{page_id}": {
       "get": {
         "responses": {
           "200": {
@@ -951,7 +951,7 @@
         "summary": "Update Page"
       }
     },
-    "/v1/pages/{page_id}/properties/{property_id}": {
+    "/pages/{page_id}/properties/{property_id}": {
       "get": {
         "responses": {
           "200": {
@@ -996,7 +996,7 @@
         "summary": "Get Page Property"
       }
     },
-    "/v1/search": {
+    "/search": {
       "post": {
         "parameters": [
           {
@@ -1059,7 +1059,7 @@
         "summary": "Search"
       }
     },
-    "/v1/users": {
+    "/users": {
       "get": {
         "responses": {
           "200": {
@@ -1088,7 +1088,7 @@
         "summary": "List Users"
       }
     },
-    "/v1/users/me": {
+    "/users/me": {
       "get": {
         "responses": {
           "200": {
@@ -1117,7 +1117,7 @@
         "summary": "Get Self"
       }
     },
-    "/v1/users/{user_id}": {
+    "/users/{user_id}": {
       "get": {
         "responses": {
           "200": {
