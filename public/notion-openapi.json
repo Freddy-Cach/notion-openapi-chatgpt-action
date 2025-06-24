@@ -317,6 +317,7 @@
                   "value": {
                     "properties": {
                       "Name": {
+                        "type": "title",
                         "title": {}
                       }
                     }
@@ -338,20 +339,28 @@
                     ],
                     "properties": {
                       "Name": {
+                        "type": "title",
                         "title": {}
                       },
                       "Action": {
+                        "type": "select",
                         "select": {
                           "options": []
                         }
                       },
                       "Endpoint": {
+                        "type": "multi_select",
                         "multi_select": {
                           "options": []
                         }
                       },
                       "Timestamp": {
+                        "type": "date",
                         "date": {}
+                      },
+                      "HTTP Status": {
+                        "type": "number",
+                        "number": {}
                       }
                     }
                   }
