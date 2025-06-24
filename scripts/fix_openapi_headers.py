@@ -1,5 +1,35 @@
-import sys, yaml, json
+import sys
+import yaml
+import json
 from pathlib import Path
+
+
+NOTION_SERVER_URL = "https://api.notion.com/v1"
+
+
+def fix_servers(data):
+    """Ensure the servers section matches the official Notion base URL."""
+    data["servers"] = [{"url": NOTION_SERVER_URL}]
+    return data
+
+
+def remove_v1_prefix(data):
+    """Remove '/v1' prefix from all path keys."""
+    paths = data.get("paths", {})
+    new_paths = {}
+    for path, ops in paths.items():
+        if path.startswith("/v1/"):
+            path = path[3:]
+        new_paths[path] = ops
+    data["paths"] = new_paths
+    return data
+
+
+def remove_parameters_component(data):
+    comps = data.get("components")
+    if isinstance(comps, dict) and "parameters" in comps:
+        comps.pop("parameters")
+    return data
 
 def inline_headers(data):
     header_notion_version = {
@@ -23,7 +53,7 @@ def inline_headers(data):
                 continue
             params = op.get('parameters')
             if not params:
-                continue
+                params = []
             new_params = []
             seen = set()
             for p in params:
@@ -39,6 +69,14 @@ def inline_headers(data):
                 if name:
                     seen.add(name)
                 new_params.append(p)
+
+            # drop Content-Type if no requestBody
+            if 'requestBody' not in op:
+                new_params = [p for p in new_params if not (isinstance(p, dict) and p.get('name') == 'Content-Type')]
+
+            if not any(isinstance(p, dict) and p.get('name') == 'Notion-Version' for p in new_params):
+                new_params.append(header_notion_version)
+
             op['parameters'] = new_params
     return data
 
@@ -48,7 +86,10 @@ class NoAliasDumper(yaml.SafeDumper):
 
 def process_yaml(path):
     data = yaml.safe_load(Path(path).read_text())
+    data = fix_servers(data)
+    data = remove_v1_prefix(data)
     data = inline_headers(data)
+    data = remove_parameters_component(data)
     Path(path).write_text(
         yaml.dump(data, sort_keys=False, Dumper=NoAliasDumper)
     )
@@ -56,7 +97,10 @@ def process_yaml(path):
 
 def process_json(path):
     data = json.loads(Path(path).read_text())
+    data = fix_servers(data)
+    data = remove_v1_prefix(data)
     data = inline_headers(data)
+    data = remove_parameters_component(data)
     Path(path).write_text(json.dumps(data, indent=2))
 
 
