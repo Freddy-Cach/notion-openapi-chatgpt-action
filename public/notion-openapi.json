@@ -31,14 +31,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "block_id",
@@ -66,14 +59,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "block_id",
@@ -101,14 +87,10 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "block_id",
@@ -148,14 +130,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "block_id",
@@ -183,14 +158,10 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "block_id",
@@ -239,14 +210,7 @@
         "operationId": "listComments",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "List Comments"
@@ -266,14 +230,7 @@
         "operationId": "createComment",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Create Comment"
@@ -295,14 +252,10 @@
         "operationId": "createDatabase",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "requestBody": {
@@ -327,9 +280,6 @@
           "400": {
             "description": "Bad request"
           },
-          "default": {
-            "description": "Default response"
-          },
           "404": {
             "description": "Database not found or not queryable (inline?)",
             "content": {
@@ -344,18 +294,14 @@
                 }
               }
             }
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "database_id",
@@ -377,9 +323,6 @@
           "400": {
             "description": "Bad request"
           },
-          "default": {
-            "description": "Default response"
-          },
           "404": {
             "description": "Database not found or not queryable (inline?)",
             "content": {
@@ -394,18 +337,17 @@
                 }
               }
             }
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "database_id",
@@ -439,9 +381,6 @@
           "400": {
             "description": "Bad request"
           },
-          "default": {
-            "description": "Default response"
-          },
           "404": {
             "description": "Database not found or not queryable (inline?)",
             "content": {
@@ -456,18 +395,17 @@
                 }
               }
             }
+          },
+          "default": {
+            "description": "Default response"
           }
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "database_id",
@@ -508,14 +446,7 @@
         "operationId": "listFileUploads",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "List File Uploads"
@@ -535,14 +466,7 @@
         "operationId": "createFileUpload",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Create File Upload"
@@ -563,14 +487,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -600,14 +517,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -637,14 +547,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "file_upload_id",
@@ -675,14 +578,7 @@
         "operationId": "oauthIntrospect",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Oauth Introspect"
@@ -704,14 +600,7 @@
         "operationId": "oauthRevoke",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Oauth Revoke"
@@ -733,14 +622,7 @@
         "operationId": "oauthToken",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Oauth Token"
@@ -762,14 +644,10 @@
         "operationId": "createPage",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "requestBody": {
@@ -800,14 +678,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "page_id",
@@ -835,14 +706,10 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "page_id",
@@ -882,14 +749,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "page_id",
@@ -916,18 +776,14 @@
       "post": {
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/JsonContentType"
+          },
+          {
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -941,7 +797,19 @@
             "description": "OK"
           },
           "400": {
-            "description": "Bad request"
+            "description": "Validation error (malformed or over-size search payload)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "object": "error",
+                  "code": "validation_error",
+                  "message": "Invalid search payload"
+                }
+              }
+            }
           },
           "default": {
             "description": "Default response"
@@ -967,14 +835,7 @@
         "operationId": "listUsers",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "List Users"
@@ -996,14 +857,7 @@
         "operationId": "getSelf",
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           }
         ],
         "summary": "Get Self"
@@ -1024,14 +878,7 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            },
-            "description": "Notion API version"
+            "$ref": "#/components/headers/NotionVersion"
           },
           {
             "name": "user_id",
@@ -1572,7 +1419,11 @@
             "type": "object",
             "additionalProperties": true
           }
-        }
+        },
+        "required": [
+          "query"
+        ],
+        "minProperties": 1
       },
       "SearchResponse": {
         "type": "array",
@@ -1669,6 +1520,30 @@
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT"
+      }
+    },
+    "headers": {
+      "JsonContentType": {
+        "name": "Content-Type",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "application/json"
+          ]
+        },
+        "required": true,
+        "description": "Always application/json for Notion POST/PATCH bodies"
+      },
+      "NotionVersion": {
+        "name": "Notion-Version",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "default": "2022-06-28"
+        },
+        "required": true,
+        "description": "API version"
       }
     }
   },
