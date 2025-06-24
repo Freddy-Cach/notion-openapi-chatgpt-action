@@ -7,10 +7,10 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 servers:
-- url: https://api.notion.com
+- url: https://api.notion.com/v1
   description: Main API server
 paths:
-  /v1/blocks/{block_id}:
+  /blocks/{block_id}:
     delete:
       responses:
         '200':
@@ -94,7 +94,7 @@ paths:
             schema:
               $ref: '#/components/schemas/BlockUpdate'
       summary: Update Block
-  /v1/blocks/{block_id}/children:
+  /blocks/{block_id}/children:
     get:
       responses:
         '200':
@@ -160,7 +160,7 @@ paths:
                   $ref: '#/components/schemas/BlockChildren'
       operationId: appendBlockChildren
       summary: Append Block Children
-  /v1/comments:
+  /comments:
     get:
       responses:
         '200':
@@ -197,7 +197,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Create Comment
-  /v1/databases:
+  /databases:
     post:
       responses:
         '200':
@@ -230,7 +230,7 @@ paths:
             schema:
               $ref: '#/components/schemas/DatabaseCreate'
       summary: Create Database
-  /v1/databases/{database_id}:
+  /databases/{database_id}:
     get:
       responses:
         '200':
@@ -311,7 +311,7 @@ paths:
             schema:
               $ref: '#/components/schemas/DatabaseUpdate'
       summary: Update Database
-  /v1/databases/{database_id}/query:
+  /databases/{database_id}/query:
     post:
       responses:
         '200':
@@ -360,7 +360,7 @@ paths:
               $ref: '#/components/schemas/DatabaseQuery'
       description: "\u26A0\uFE0F Do **not** call this endpoint if the retrieved database's\
         \ `is_inline` value is true."
-  /v1/file_uploads:
+  /file_uploads:
     get:
       responses:
         '200':
@@ -397,7 +397,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Create File Upload
-  /v1/file_uploads/{file_upload_id}:
+  /file_uploads/{file_upload_id}:
     get:
       responses:
         '200':
@@ -421,7 +421,7 @@ paths:
           type: string
       operationId: getFileUpload
       summary: Get File Upload
-  /v1/file_uploads/{file_upload_id}/complete:
+  /file_uploads/{file_upload_id}/complete:
     post:
       responses:
         '200':
@@ -445,7 +445,7 @@ paths:
           type: string
       operationId: completeFileUpload
       summary: Complete File Upload
-  /v1/file_uploads/{file_upload_id}/send:
+  /file_uploads/{file_upload_id}/send:
     post:
       responses:
         '200':
@@ -469,7 +469,7 @@ paths:
           type: string
       operationId: sendFileUpload
       summary: Send File Upload
-  /v1/oauth/introspect:
+  /oauth/introspect:
     post:
       responses:
         '200':
@@ -488,7 +488,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Oauth Introspect
-  /v1/oauth/revoke:
+  /oauth/revoke:
     post:
       responses:
         '200':
@@ -507,7 +507,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Oauth Revoke
-  /v1/oauth/token:
+  /oauth/token:
     post:
       responses:
         '200':
@@ -526,7 +526,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Oauth Token
-  /v1/pages:
+  /pages:
     post:
       responses:
         '200':
@@ -559,7 +559,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PageCreate'
       summary: Create Page
-  /v1/pages/{page_id}:
+  /pages/{page_id}:
     get:
       responses:
         '200':
@@ -620,7 +620,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PageUpdate'
       summary: Update Page
-  /v1/pages/{page_id}/properties/{property_id}:
+  /pages/{page_id}/properties/{property_id}:
     get:
       responses:
         '200':
@@ -649,7 +649,7 @@ paths:
           type: string
       operationId: getPageProperty
       summary: Get Page Property
-  /v1/search:
+  /search:
     post:
       parameters:
       - name: Content-Type
@@ -690,7 +690,7 @@ paths:
           description: Default response
       operationId: search
       summary: Search
-  /v1/users:
+  /users:
     get:
       responses:
         '200':
@@ -709,7 +709,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: List Users
-  /v1/users/me:
+  /users/me:
     get:
       responses:
         '200':
@@ -728,7 +728,7 @@ paths:
           type: string
           default: '2022-06-28'
       summary: Get Self
-  /v1/users/{user_id}:
+  /users/{user_id}:
     get:
       responses:
         '200':
