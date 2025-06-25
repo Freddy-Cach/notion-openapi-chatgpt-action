@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Notion API",
-    "description": "API for interacting with Notion resources such as pages and databases.",
+    "description": "🚨 Protocolo: search → retrieve/query → update con real.id API for interacting with Notion resources such as pages and databases.",
     "version": "1.0.0",
     "license": {
       "name": "MIT",
@@ -548,7 +548,7 @@
             }
           }
         },
-        "description": "\u26a0\ufe0f Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
+        "description": "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
       }
     },
     "/file_uploads": {
@@ -886,7 +886,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           }
         ],
         "operationId": "retrievePage",
@@ -933,7 +935,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           }
         ],
         "operationId": "updatePage",
@@ -943,6 +947,17 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PageUpdate"
+              },
+              "examples": {
+                "updateWithEmoji": {
+                  "value": {
+                    "page_id": "<real.id>",
+                    "icon": {
+                      "type": "emoji",
+                      "emoji": "🎯"
+                    }
+                  }
+                }
               }
             }
           }
@@ -980,7 +995,9 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           },
           {
             "name": "property_id",
@@ -1055,7 +1072,8 @@
           }
         },
         "operationId": "search",
-        "summary": "Search"
+        "summary": "Search",
+        "description": "Usa este endpoint sólo para encontrar candidatos. NO confíes en el ID devuelto para actualizar iconos."
       }
     },
     "/users": {
@@ -1405,8 +1423,10 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "emoji"
-                ]
+                  "emoji",
+                  "external"
+                ],
+                "description": "Obligatorio: 'emoji' para icono nativo o 'external' para URL permanente"
               },
               "emoji": {
                 "type": "string"
@@ -1423,8 +1443,10 @@
               "type": {
                 "type": "string",
                 "enum": [
+                  "emoji",
                   "external"
-                ]
+                ],
+                "description": "Obligatorio: 'emoji' para icono nativo o 'external' para URL permanente"
               },
               "external": {
                 "type": "object",
