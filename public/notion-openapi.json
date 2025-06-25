@@ -1,8 +1,8 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.1",
   "info": {
     "title": "Notion API",
-    "description": "🚨 Protocolo: search → retrieve/query → update con real.id API for interacting with Notion resources such as pages and databases.",
+    "description": "Always: search → retrieve/query → update with canonical page_id.",
     "version": "1.0.0",
     "license": {
       "name": "MIT",
@@ -30,16 +30,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -65,16 +55,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -99,28 +79,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
           {
             "name": "block_id",
             "in": "path",
@@ -159,16 +117,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "block_id",
             "in": "path",
             "required": true,
@@ -193,28 +141,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
           {
             "name": "block_id",
             "in": "path",
@@ -246,62 +172,6 @@
         "summary": "Append Block Children"
       }
     },
-    "/comments": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "listComments",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "List Comments"
-      },
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "createComment",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Create Comment"
-      }
-    },
     "/databases": {
       "post": {
         "responses": {
@@ -316,30 +186,6 @@
           }
         },
         "operationId": "createDatabase",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -383,16 +229,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "database_id",
             "in": "path",
             "required": true,
@@ -432,28 +268,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
           {
             "name": "database_id",
             "in": "path",
@@ -507,28 +321,6 @@
         },
         "parameters": [
           {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "database_id",
             "in": "path",
             "required": true,
@@ -544,265 +336,23 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DatabaseQuery"
+              },
+              "examples": {
+                "nameContainsTango": {
+                  "value": {
+                    "filter": {
+                      "property": "Name",
+                      "text": {
+                        "contains": "Tango"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         },
-        "description": "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true."
-      }
-    },
-    "/file_uploads": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "listFileUploads",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "List File Uploads"
-      },
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "createFileUpload",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Create File Upload"
-      }
-    },
-    "/file_uploads/{file_upload_id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
-            "name": "file_upload_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "getFileUpload",
-        "summary": "Get File Upload"
-      }
-    },
-    "/file_uploads/{file_upload_id}/complete": {
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
-            "name": "file_upload_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "completeFileUpload",
-        "summary": "Complete File Upload"
-      }
-    },
-    "/file_uploads/{file_upload_id}/send": {
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
-            "name": "file_upload_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "sendFileUpload",
-        "summary": "Send File Upload"
-      }
-    },
-    "/oauth/introspect": {
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "oauthIntrospect",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Oauth Introspect"
-      }
-    },
-    "/oauth/revoke": {
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "oauthRevoke",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Oauth Revoke"
-      }
-    },
-    "/oauth/token": {
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "oauthToken",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Oauth Token"
+        "description": "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true. Use `next_cursor` for paging."
       }
     },
     "/pages": {
@@ -819,30 +369,6 @@
           }
         },
         "operationId": "createPage",
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -871,16 +397,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "page_id",
             "in": "path",
             "required": true,
@@ -907,28 +423,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
           {
             "name": "page_id",
             "in": "path",
@@ -980,16 +474,6 @@
         },
         "parameters": [
           {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
             "name": "page_id",
             "in": "path",
             "required": true,
@@ -1014,30 +498,6 @@
     },
     "/search": {
       "post": {
-        "parameters": [
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "required": true,
-            "description": "Always application/json for Notion POST/PATCH bodies",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
-            }
-          },
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1075,129 +535,10 @@
         "summary": "Search",
         "description": "Usa este endpoint sólo para encontrar candidatos. NO confíes en el ID devuelto para actualizar iconos."
       }
-    },
-    "/users": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "listUsers",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "List Users"
-      }
-    },
-    "/users/me": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "operationId": "getSelf",
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          }
-        ],
-        "summary": "Get Self"
-      }
-    },
-    "/users/{user_id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "default": {
-            "description": "Default response"
-          }
-        },
-        "parameters": [
-          {
-            "name": "Notion-Version",
-            "in": "header",
-            "required": true,
-            "description": "API version",
-            "schema": {
-              "type": "string",
-              "default": "2022-06-28"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "getUser",
-        "summary": "Get User"
-      }
     }
   },
   "components": {
     "schemas": {
-      "Page": {
-        "type": "object",
-        "required": [
-          "object",
-          "id",
-          "properties"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "page"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "properties": {
-            "type": "object",
-            "additionalProperties": true
-          }
-        }
-      },
       "PageUpdate": {
         "type": "object",
         "properties": {
@@ -1224,51 +565,27 @@
         ],
         "properties": {
           "parent": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": [
-                  "page_id"
-                ],
-                "properties": {
-                  "page_id": {
-                    "type": "string",
-                    "format": "uuid"
-                  }
-                }
+            "type": "object",
+            "properties": {
+              "page_id": {
+                "type": "string",
+                "format": "uuid"
               },
-              {
-                "type": "object",
-                "required": [
-                  "database_id"
-                ],
-                "properties": {
-                  "database_id": {
-                    "type": "string",
-                    "format": "uuid"
-                  }
-                }
+              "database_id": {
+                "type": "string",
+                "format": "uuid"
               },
-              {
-                "type": "object",
-                "required": [
-                  "type",
+              "type": {
+                "type": "string",
+                "enum": [
                   "workspace"
-                ],
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": [
-                      "workspace"
-                    ]
-                  },
-                  "workspace": {
-                    "type": "boolean",
-                    "description": "Only supported for public integrations with insert_content capability"
-                  }
-                }
+                ]
+              },
+              "workspace": {
+                "type": "boolean",
+                "description": "Only supported for public integrations with insert_content capability"
               }
-            ]
+            }
           },
           "properties": {
             "type": "object",
@@ -1412,54 +729,31 @@
         }
       },
       "IconObject": {
-        "oneOf": [
-          {
-            "type": "object",
-            "required": [
-              "type",
-              "emoji"
-            ],
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "emoji",
-                  "external"
-                ],
-                "description": "Obligatorio: 'emoji' para icono nativo o 'external' para URL permanente"
-              },
-              "emoji": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "type": "object",
-            "required": [
-              "type",
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "emoji",
               "external"
-            ],
+            ]
+          },
+          "emoji": {
+            "type": "string"
+          },
+          "external": {
+            "type": "object",
             "properties": {
-              "type": {
+              "url": {
                 "type": "string",
-                "enum": [
-                  "emoji",
-                  "external"
-                ],
-                "description": "Obligatorio: 'emoji' para icono nativo o 'external' para URL permanente"
-              },
-              "external": {
-                "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "format": "uri"
-                  }
-                }
+                "format": "uri"
               }
             }
           }
-        ]
+        }
       },
       "FileExternal": {
         "type": "object",
@@ -1490,61 +784,6 @@
         "properties": {},
         "additionalProperties": true,
         "description": "Any single property object allowed by Notion."
-      },
-      "Database": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "database"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "properties": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "is_inline": {
-            "type": "boolean"
-          },
-          "parent": {
-            "$ref": "#/components/schemas/Parent"
-          }
-        }
-      },
-      "User": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "user"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string"
-          },
-          "avatar_url": {
-            "type": "string",
-            "format": "uri"
-          }
-        }
       },
       "BlockChildren": {
         "type": "array",
@@ -1595,55 +834,6 @@
           }
         }
       },
-      "Comment": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "comment"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "parent": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "content": {
-            "type": "string"
-          }
-        }
-      },
-      "PagePropertyItem": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "property_item"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "property_data": {
-            "type": "object",
-            "additionalProperties": true
-          }
-        }
-      },
       "DatabaseQuery": {
         "type": "object",
         "properties": {
@@ -1668,29 +858,6 @@
         },
         "additionalProperties": false
       },
-      "DatabaseRecord": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "database_record"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "record_data": {
-            "type": "object",
-            "additionalProperties": true
-          }
-        }
-      },
       "SearchRequest": {
         "type": "object",
         "properties": {
@@ -1706,69 +873,6 @@
           "query"
         ],
         "minProperties": 1
-      },
-      "SearchResponse": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SearchResult"
-        }
-      },
-      "SearchResult": {
-        "type": "object",
-        "required": [
-          "object",
-          "id"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "search_result"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "result_data": {
-            "type": "object",
-            "additionalProperties": true
-          }
-        }
-      },
-      "Parent": {
-        "oneOf": [
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "const": "page_id"
-              },
-              "page_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "page_id"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
-          }
-        ],
-        "description": "Parent object for databases (page or workspace)."
       },
       "Error": {
         "type": "object",
