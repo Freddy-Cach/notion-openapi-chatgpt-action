@@ -127,7 +127,44 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BlockUpdate"
+                "type": "object",
+                "properties": {
+                  "archived": {
+                    "type": "boolean"
+                  },
+                  "callout": {
+                    "type": "object",
+                    "properties": {
+                      "icon": {
+                        "type": "object",
+                        "required": [
+                          "type"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "emoji",
+                              "external"
+                            ]
+                          },
+                          "emoji": {
+                            "type": "string"
+                          },
+                          "external": {
+                            "type": "object",
+                            "properties": {
+                              "url": {
+                                "type": "string",
+                                "format": "uri"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -216,7 +253,34 @@
                 ],
                 "properties": {
                   "children": {
-                    "$ref": "#/components/schemas/BlockChildren"
+                    "type": "array",
+                    "description": "Children cannot include a child_database block. Use the database creation endpoint instead.",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "object",
+                        "id"
+                      ],
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "block"
+                          ]
+                        },
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "block_data": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -246,7 +310,115 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DatabaseCreate"
+                "type": "object",
+                "required": [
+                  "parent",
+                  "title",
+                  "properties"
+                ],
+                "properties": {
+                  "parent": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "page_id"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "page_id"
+                        ]
+                      },
+                      "page_id": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "title": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text"
+                          ]
+                        },
+                        "text": {
+                          "type": "object",
+                          "properties": {
+                            "content": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "text"
+                      ]
+                    }
+                  },
+                  "icon": {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "emoji",
+                          "external"
+                        ]
+                      },
+                      "emoji": {
+                        "type": "string"
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cover": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "external"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "external"
+                        ]
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "properties": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "description": "Any single property object allowed by Notion."
+                  }
+                }
               }
             }
           }
@@ -281,7 +453,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
                 },
                 "example": {
                   "object": "error",
@@ -332,7 +527,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
                 },
                 "example": {
                   "object": "error",
@@ -373,7 +591,90 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DatabaseUpdate"
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "text"
+                          ]
+                        },
+                        "text": {
+                          "type": "object",
+                          "properties": {
+                            "content": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "text"
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "icon": {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "emoji",
+                          "external"
+                        ]
+                      },
+                      "emoji": {
+                        "type": "string"
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cover": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "external"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "external"
+                        ]
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -395,7 +696,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
                 },
                 "example": {
                   "object": "error",
@@ -436,7 +760,28 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DatabaseQuery"
+                "type": "object",
+                "properties": {
+                  "filter": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "sorts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "start_cursor": {
+                    "type": "string"
+                  },
+                  "page_size": {
+                    "type": "integer",
+                    "maximum": 100
+                  }
+                },
+                "additionalProperties": false
               },
               "examples": {
                 "nameContainsTango": {
@@ -475,7 +820,116 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PageCreate"
+                "type": "object",
+                "required": [
+                  "parent",
+                  "properties"
+                ],
+                "properties": {
+                  "parent": {
+                    "type": "object",
+                    "properties": {
+                      "page_id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "database_id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "workspace"
+                        ]
+                      },
+                      "workspace": {
+                        "type": "boolean",
+                        "description": "Only supported for public integrations with insert_content capability"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "object",
+                              "properties": {
+                                "content": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "additionalProperties": true
+                  },
+                  "children": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "icon": {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "emoji",
+                          "external"
+                        ]
+                      },
+                      "emoji": {
+                        "type": "string"
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cover": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "external"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "external"
+                        ]
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -576,7 +1030,67 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PageUpdate"
+                "type": "object",
+                "properties": {
+                  "properties": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "archived": {
+                    "type": "boolean"
+                  },
+                  "icon": {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "emoji",
+                          "external"
+                        ]
+                      },
+                      "emoji": {
+                        "type": "string"
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cover": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "external"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "external"
+                        ]
+                      },
+                      "external": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               },
               "examples": {
                 "updateWithEmoji": {
@@ -650,7 +1164,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SearchRequest"
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  },
+                  "sort": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "minProperties": 1
               }
             }
           }
@@ -664,7 +1191,30 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
                 },
                 "example": {
                   "object": "error",
@@ -710,10 +1260,55 @@
             "type": "boolean"
           },
           "icon": {
-            "$ref": "#/components/schemas/IconObject"
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/FileExternal"
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -777,10 +1372,55 @@
             }
           },
           "icon": {
-            "$ref": "#/components/schemas/IconObject"
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/FileExternal"
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -837,13 +1477,61 @@
             }
           },
           "icon": {
-            "$ref": "#/components/schemas/IconObject"
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/FileExternal"
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           },
           "properties": {
-            "$ref": "#/components/schemas/DatabasePropertyCreate"
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true,
+            "description": "Any single property object allowed by Notion."
           }
         }
       },
@@ -881,10 +1569,55 @@
             "additionalProperties": true
           },
           "icon": {
-            "$ref": "#/components/schemas/IconObject"
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           },
           "cover": {
-            "$ref": "#/components/schemas/FileExternal"
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -949,7 +1682,30 @@
         "type": "array",
         "description": "Children cannot include a child_database block. Use the database creation endpoint instead.",
         "items": {
-          "$ref": "#/components/schemas/Block"
+          "type": "object",
+          "required": [
+            "object",
+            "id"
+          ],
+          "properties": {
+            "object": {
+              "type": "string",
+              "enum": [
+                "block"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": {
+              "type": "string"
+            },
+            "block_data": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
         }
       },
       "BlockUpdate": {
@@ -962,7 +1718,31 @@
             "type": "object",
             "properties": {
               "icon": {
-                "$ref": "#/components/schemas/IconObject"
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "emoji",
+                      "external"
+                    ]
+                  },
+                  "emoji": {
+                    "type": "string"
+                  },
+                  "external": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
               }
             }
           }
