@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.0",
   "info": {
     "title": "Notion API",
     "description": "Always: search → retrieve/query → update with canonical page_id.",
@@ -36,6 +36,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "deleteBlock",
@@ -61,6 +72,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "retrieveBlock",
@@ -85,6 +107,17 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
             }
           }
         ],
@@ -123,6 +156,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "listBlockChildren",
@@ -147,6 +191,17 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
             }
           }
         ],
@@ -196,7 +251,20 @@
             }
           }
         },
-        "summary": "Create Database"
+        "summary": "Create Database",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ]
       }
     },
     "/databases/{database_id}": {
@@ -234,6 +302,17 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
             }
           }
         ],
@@ -274,6 +353,17 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
             }
           }
         ],
@@ -327,6 +417,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "queryDatabase",
@@ -379,7 +480,20 @@
             }
           }
         },
-        "summary": "Create Page"
+        "summary": "Create Page",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ]
       }
     },
     "/pages/{page_id}": {
@@ -405,6 +519,17 @@
             },
             "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
             "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "retrievePage",
@@ -432,6 +557,17 @@
             },
             "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
             "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "updatePage",
@@ -490,6 +626,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
           }
         ],
         "operationId": "getPageProperty",
@@ -533,7 +680,20 @@
         },
         "operationId": "search",
         "summary": "Search",
-        "description": "Usa este endpoint sólo para encontrar candidatos. NO confíes en el ID devuelto para actualizar iconos."
+        "description": "Usa este endpoint sólo para encontrar candidatos. NO confíes en el ID devuelto para actualizar iconos.",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ]
       }
     }
   },
