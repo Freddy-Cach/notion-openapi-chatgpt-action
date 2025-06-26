@@ -1,0 +1,1419 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Notion API",
+    "description": "Always: search \u2192 retrieve/query \u2192 update with canonical page_id.",
+    "version": "1.0.0",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.notion.com/v1"
+    }
+  ],
+  "paths": {
+    "/blocks/{block_id}": {
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "deleteBlock",
+        "summary": "Delete Block"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "retrieveBlock",
+        "summary": "Retrieve Block"
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ],
+        "operationId": "updateBlock",
+        "summary": "Update Block"
+      }
+    },
+    "/blocks/{block_id}/children": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "listBlockChildren",
+        "summary": "List Block Children"
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "block_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "children": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ],
+        "operationId": "appendBlockChildren",
+        "summary": "Append Block Children"
+      }
+    },
+    "/databases": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "operationId": "createDatabase",
+        "summary": "Create Database",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "parent": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ]
+      }
+    },
+    "/databases/{database_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "retrieveDatabase",
+        "summary": "Retrieve Database"
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ],
+        "operationId": "updateDatabase",
+        "summary": "Update Database"
+      }
+    },
+    "/databases/{database_id}/query": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Database not found or not queryable (inline?)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "object": "error",
+                  "code": "object_not_found",
+                  "message": "Database not found or not shared with integration."
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "database_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "filter": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ],
+        "operationId": "queryDatabase",
+        "summary": "Query Database",
+        "description": "\u26a0\ufe0f Do **not** call this endpoint if the retrieved database's `is_inline` value is true. Use `next_cursor` for paging."
+      }
+    },
+    "/pages": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "operationId": "createPage",
+        "summary": "Create Page",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "parent": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ]
+      }
+    },
+    "/pages/{page_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "retrievePage",
+        "summary": "Retrieve Page"
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ],
+        "operationId": "updatePage",
+        "summary": "Update Page"
+      }
+    },
+    "/pages/{page_id}/properties/{property_id}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
+          },
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          }
+        ],
+        "operationId": "getPageProperty",
+        "summary": "Get Page Property"
+      }
+    },
+    "/search": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation error (malformed or over-size search payload)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "object",
+                    "status",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "enum": [
+                        "error"
+                      ]
+                    },
+                    "status": {
+                      "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "object": "error",
+                  "code": "validation_error",
+                  "message": "Invalid search payload"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Default response"
+          }
+        },
+        "operationId": "search",
+        "summary": "Search",
+        "description": "Usa este endpoint s\u00f3lo para encontrar candidatos. NO conf\u00edes en el ID devuelto para actualizar iconos.",
+        "parameters": [
+          {
+            "name": "Notion-Version",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "2022-06-28"
+              ]
+            }
+          },
+          {
+            "name": "body",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true,
+              "required": true
+            },
+            "description": "JSON payload formerly in requestBody"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PageUpdate": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "icon": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          },
+          "cover": {
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PageCreate": {
+        "type": "object",
+        "required": [
+          "parent",
+          "properties"
+        ],
+        "properties": {
+          "parent": {
+            "type": "object",
+            "properties": {
+              "page_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "database_id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "workspace"
+                ]
+              },
+              "workspace": {
+                "type": "boolean",
+                "description": "Only supported for public integrations with insert_content capability"
+              }
+            }
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "object",
+                      "properties": {
+                        "content": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "icon": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          },
+          "cover": {
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "DatabaseCreate": {
+        "type": "object",
+        "required": [
+          "parent",
+          "title",
+          "properties"
+        ],
+        "properties": {
+          "parent": {
+            "type": "object",
+            "required": [
+              "type",
+              "page_id"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "page_id"
+                ]
+              },
+              "page_id": {
+                "type": "string"
+              }
+            }
+          },
+          "title": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "text"
+                  ]
+                },
+                "text": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "text"
+              ]
+            }
+          },
+          "icon": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          },
+          "cover": {
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          },
+          "properties": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true,
+            "description": "Any single property object allowed by Notion."
+          }
+        }
+      },
+      "DatabaseUpdate": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "text"
+                  ]
+                },
+                "text": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "type",
+                "text"
+              ]
+            }
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "icon": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "emoji",
+                  "external"
+                ]
+              },
+              "emoji": {
+                "type": "string"
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          },
+          "cover": {
+            "type": "object",
+            "required": [
+              "type",
+              "external"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "external"
+                ]
+              },
+              "external": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "IconObject": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "emoji",
+              "external"
+            ]
+          },
+          "emoji": {
+            "type": "string"
+          },
+          "external": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      },
+      "FileExternal": {
+        "type": "object",
+        "required": [
+          "type",
+          "external"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "external"
+            ]
+          },
+          "external": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      },
+      "DatabasePropertyCreate": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true,
+        "description": "Any single property object allowed by Notion."
+      },
+      "BlockChildren": {
+        "type": "array",
+        "description": "Children cannot include a child_database block. Use the database creation endpoint instead.",
+        "items": {
+          "type": "object",
+          "required": [
+            "object",
+            "id"
+          ],
+          "properties": {
+            "object": {
+              "type": "string",
+              "enum": [
+                "block"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": {
+              "type": "string"
+            },
+            "block_data": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "BlockUpdate": {
+        "type": "object",
+        "properties": {
+          "archived": {
+            "type": "boolean"
+          },
+          "callout": {
+            "type": "object",
+            "properties": {
+              "icon": {
+                "type": "object",
+                "required": [
+                  "type"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "emoji",
+                      "external"
+                    ]
+                  },
+                  "emoji": {
+                    "type": "string"
+                  },
+                  "external": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Block": {
+        "type": "object",
+        "required": [
+          "object",
+          "id"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "block"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string"
+          },
+          "block_data": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "DatabaseQuery": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "sorts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "start_cursor": {
+            "type": "string"
+          },
+          "page_size": {
+            "type": "integer",
+            "maximum": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchRequest": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "sort": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "minProperties": 1
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "object",
+          "status",
+          "code",
+          "message"
+        ],
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "error"
+            ]
+          },
+          "status": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ]
+}
