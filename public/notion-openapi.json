@@ -638,7 +638,9 @@
             "schema": {
               "type": "object",
               "properties": {},
-              "additionalProperties": true,
+              "additionalProperties": {
+                "type": "object"
+              },
               "description": "Any single property object allowed by Notion."
             }
           }
@@ -827,7 +829,9 @@
             "required": false,
             "schema": {
               "type": "object",
-              "additionalProperties": true
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           },
           {
@@ -1066,7 +1070,9 @@
             "required": false,
             "schema": {
               "type": "object",
-              "additionalProperties": true
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           },
           {
@@ -1502,7 +1508,9 @@
             "required": false,
             "schema": {
               "type": "object",
-              "additionalProperties": true
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           },
           {
@@ -1808,7 +1816,9 @@
             "required": false,
             "schema": {
               "type": "object",
-              "additionalProperties": true
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ]
