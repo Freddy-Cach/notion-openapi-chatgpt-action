@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Notion API",
-    "description": "Always: search → retrieve/query → update with canonical page_id.",
+    "description": "Always: search \u2192 retrieve/query \u2192 update with canonical page_id.",
     "version": "1.0.0",
     "license": {
       "name": "MIT",
@@ -118,6 +118,51 @@
               "enum": [
                 "2022-06-28"
               ]
+            }
+          },
+          {
+            "name": "archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "callout",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "type": "object",
+                  "required": [
+                    "type"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "emoji",
+                        "external"
+                      ]
+                    },
+                    "emoji": {
+                      "type": "string"
+                    },
+                    "external": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         ],
@@ -239,6 +284,41 @@
               "enum": [
                 "2022-06-28"
               ]
+            }
+          },
+          {
+            "name": "children",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "description": "Children cannot include a child_database block. Use the database creation endpoint instead.",
+              "items": {
+                "type": "object",
+                "required": [
+                  "object",
+                  "id"
+                ],
+                "properties": {
+                  "object": {
+                    "type": "string",
+                    "enum": [
+                      "block"
+                    ]
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "block_data": {
+                    "type": "object",
+                    "additionalProperties": true
+                  }
+                }
+              }
             }
           }
         ],
@@ -435,6 +515,132 @@
                 "2022-06-28"
               ]
             }
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "page_id"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "page_id"
+                  ]
+                },
+                "page_id": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "text"
+                    ]
+                  },
+                  "text": {
+                    "type": "object",
+                    "properties": {
+                      "content": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "type",
+                  "text"
+                ]
+              }
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "emoji",
+                    "external"
+                  ]
+                },
+                "emoji": {
+                  "type": "string"
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "cover",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "external"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "external"
+                  ]
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "properties",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true,
+              "description": "Any single property object allowed by Notion."
+            }
           }
         ]
       }
@@ -582,6 +788,107 @@
               "enum": [
                 "2022-06-28"
               ]
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "text"
+                    ]
+                  },
+                  "text": {
+                    "type": "object",
+                    "properties": {
+                      "content": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "type",
+                  "text"
+                ]
+              }
+            }
+          },
+          {
+            "name": "properties",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "emoji",
+                    "external"
+                  ]
+                },
+                "emoji": {
+                  "type": "string"
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "cover",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "external"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "external"
+                  ]
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
             }
           }
         ],
@@ -752,6 +1059,44 @@
                 "2022-06-28"
               ]
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          {
+            "name": "sorts",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          },
+          {
+            "name": "start_cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100
+            }
           }
         ],
         "operationId": "queryDatabase",
@@ -798,7 +1143,7 @@
             }
           }
         },
-        "description": "⚠️ Do **not** call this endpoint if the retrieved database's `is_inline` value is true. Use `next_cursor` for paging."
+        "description": "\u26a0\ufe0f Do **not** call this endpoint if the retrieved database's `is_inline` value is true. Use `next_cursor` for paging."
       }
     },
     "/pages": {
@@ -946,6 +1291,134 @@
                 "2022-06-28"
               ]
             }
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "page_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "database_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "workspace"
+                  ]
+                },
+                "workspace": {
+                  "type": "boolean",
+                  "description": "Only supported for public integrations with insert_content capability"
+                }
+              }
+            }
+          },
+          {
+            "name": "properties",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "object",
+                        "properties": {
+                          "content": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          {
+            "name": "children",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "emoji",
+                    "external"
+                  ]
+                },
+                "emoji": {
+                  "type": "string"
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "cover",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "external"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "external"
+                  ]
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
           }
         ]
       }
@@ -971,7 +1444,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
             "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           },
           {
@@ -1009,7 +1482,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
             "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           },
           {
@@ -1021,6 +1494,84 @@
               "enum": [
                 "2022-06-28"
               ]
+            }
+          },
+          {
+            "name": "properties",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          {
+            "name": "archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "emoji",
+                    "external"
+                  ]
+                },
+                "emoji": {
+                  "type": "string"
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "cover",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "external"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "external"
+                  ]
+                },
+                "external": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  }
+                }
+              }
             }
           }
         ],
@@ -1098,7 +1649,7 @@
                     "page_id": "<real.id>",
                     "icon": {
                       "type": "emoji",
-                      "emoji": "🎯"
+                      "emoji": "\ud83c\udfaf"
                     }
                   }
                 }
@@ -1130,7 +1681,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ID de página CANÓNICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
+            "description": "ID de p\u00e1gina CAN\u00d3NICO (obtenido con pages.retrieve), ej: \"a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6\"",
             "example": "a1b2c3d4-e5f6-7a8b-9c0d-e1f2a3b4c5d6"
           },
           {
@@ -1230,7 +1781,7 @@
         },
         "operationId": "search",
         "summary": "Search",
-        "description": "Usa este endpoint sólo para encontrar candidatos. NO confíes en el ID devuelto para actualizar iconos.",
+        "description": "Usa este endpoint s\u00f3lo para encontrar candidatos. NO conf\u00edes en el ID devuelto para actualizar iconos.",
         "parameters": [
           {
             "name": "Notion-Version",
@@ -1241,6 +1792,23 @@
               "enum": [
                 "2022-06-28"
               ]
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
             }
           }
         ]
